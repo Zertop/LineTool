@@ -262,7 +262,7 @@ public class Main extends javax.swing.JFrame {
         fieldResults.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         fieldResultsScroll.setViewportView(fieldResults);
 
-        ResultsPanel.add(fieldResultsScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 440, 180));
+        ResultsPanel.add(fieldResultsScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 450, 180));
 
         labelResults.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
         labelResults.setText("Results");

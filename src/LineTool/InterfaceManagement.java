@@ -12,7 +12,7 @@ public class InterfaceManagement implements Runnable {
         if (!running)
         {
             Main.labelRunningTests.setText ("Tests Finished (3)");
-            try {Thread.sleep(1001);} catch (InterruptedException ex) {} //Sleep Execution for 1s
+            try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
             Main.labelRunningTests.setText ("Tests Finished (2)");
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
             Main.labelRunningTests.setText ("Tests Finished (1)");
