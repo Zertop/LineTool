@@ -102,7 +102,7 @@ public class Main extends javax.swing.JFrame {
         LabelBeginTests.setForeground(new java.awt.Color(255, 255, 255));
         LabelBeginTests.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelBeginTests.setText("Begin Ping Tests");
-        MainPanel.add(LabelBeginTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 110, 20));
+        MainPanel.add(LabelBeginTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 110, 20));
 
         ButtonPower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/power.png"))); // NOI18N
         ButtonPower.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,7 +110,7 @@ public class Main extends javax.swing.JFrame {
                 ButtonPowerMouseClicked(evt);
             }
         });
-        MainPanel.add(ButtonPower, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
+        MainPanel.add(ButtonPower, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         ImageBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
         MainPanel.add(ImageBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, -50, -1, -1));
