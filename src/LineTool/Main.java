@@ -101,7 +101,7 @@ public class Main extends javax.swing.JFrame {
         LabelBeginTests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         LabelBeginTests.setForeground(new java.awt.Color(255, 255, 255));
         LabelBeginTests.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelBeginTests.setText("Begin Tests");
+        LabelBeginTests.setText("Begin Ping Tests");
         MainPanel.add(LabelBeginTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 110, 20));
 
         ButtonPower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/power.png"))); // NOI18N
