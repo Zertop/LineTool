@@ -12,7 +12,7 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 public class Updater {
-    private static final int currentVersion = 15;
+    private static final int currentVersion = 21;
     private static int availableVersion = getAvailableVersion();
     
     public static void check ()
