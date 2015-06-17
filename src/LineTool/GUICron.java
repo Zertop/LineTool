@@ -24,6 +24,10 @@ public class GUICron implements Runnable {
         }
     }
     
+    public static void setRunning (boolean r)
+    {
+        running = r;
+    }
     public void RunningTestsAnimation ()
     {
         if (running)

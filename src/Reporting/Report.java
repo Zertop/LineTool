@@ -1,7 +1,9 @@
 //Zertop™
 //www.zertop.com
-package LineTool;
+package Reporting;
 
+import LineTool.GUI;
+import LineTool.GUICron;
 import java.io.*;
 import java.util.Date;
 import java.util.regex.*;
@@ -25,7 +27,7 @@ public class Report implements Runnable {
         GUI.setimageGeneratingReportCompleted ();
         try {Thread.sleep(3000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         GUI.setimageFinishedCompleted();
-        GUICron.running = false;
+        GUICron.setRunning (false);
     }
 
 //PINGS GATEWAY
@@ -116,7 +118,7 @@ public class Report implements Runnable {
 //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI
                writerUnformatted.println (intelReport);
                writerFormatted.println (intelReport);
-               GUI.fieldResults.setText(intelReport);
+               GUI.setFieldResults(intelReport);
 //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI                
                 
 //ATTACHING DETAILED REPORT
@@ -134,8 +136,8 @@ public class Report implements Runnable {
 //SAVE AS TMP AND PARSE TO MAIN THREAD                
                 writerUnformatted.close();
                 writerFormatted.close();
-                GUI.tempFilePathUnformatted = tempUnformatted.getAbsolutePath();
-                GUI.tempFilePathFormatted = tempFormatted.getAbsolutePath();
+                GUI.setTempFilePathUnformatted (tempUnformatted.getAbsolutePath());
+                GUI.setTempFilePathFormatted (tempFormatted.getAbsolutePath());
 //SAVE AS TMP AND PARSE TO MAIN THREAD     
             } catch (IOException ex) {}
    }

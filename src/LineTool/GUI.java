@@ -2,6 +2,7 @@
 //www.zertop.com
 package LineTool;
 
+import Reporting.Report;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,9 @@ public class GUI extends javax.swing.JFrame {
         ResultsPanel.setVisible (false);
         Updater.check();
     }
+//VARIABLES
     
+//GETS AND SETS    
     public static void setimagePingingTelkomEquipmentCompleted ()
     {
         imagePingingTelkomEquipmentFalse.setVisible (false);
@@ -40,7 +43,22 @@ public class GUI extends javax.swing.JFrame {
     {
         imageFinishedFalse.setVisible (false);
     }
-
+    
+    public static void setFieldResults (String fR)
+    {
+        fieldResults.setText(fR);
+    }
+    
+    public static void setTempFilePathUnformatted (String fP)
+    {
+        tempFilePathUnformatted = fP;
+    }
+    
+    public static void setTempFilePathFormatted (String fP)
+    {
+        tempFilePathFormatted = fP;
+    }
+//GETS AND SETS   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

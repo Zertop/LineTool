@@ -1,6 +1,6 @@
 //Zertop™
 //www.zertop.com
-package LineTool;
+package Reporting;
 public class OSDetection {
     
     private static String OS = System.getProperty("os.name").toLowerCase();
