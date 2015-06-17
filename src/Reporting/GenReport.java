@@ -21,7 +21,7 @@ public class GenReport implements Runnable {
         try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         generateReport ();
         GUI.setimageGeneratingReportCompleted ();
-        try {Thread.sleep(2000);} catch (InterruptedException ex) {} //Sleep Execution for 2s
+        try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         GUI.setimageFinishedCompleted();
         GUICron.setRunning (false);
     }
