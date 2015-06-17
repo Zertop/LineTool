@@ -1,3 +1,5 @@
+//Zertop™
+//www.zertop.com
 package LineTool;
 
 import java.io.*;
@@ -5,25 +7,25 @@ import java.util.Date;
 import java.util.regex.*;
 
 public class Report implements Runnable {
-//REUSED VARIABLES
+//PERM VARIABLES
         static String pingResults;
         static String intelReport = "";
         static int maxPing = 0;
         static int minPing = 0;
         static int avePing = 0;  
         static int packetLoss = 0;
-//REUSED VARIABLES
+//PERM VARIABLES
         
     public void run ()
     {
         pingGateway();
-        Main.setimagePingingTelkomEquipmentCompleted();
+        GUI.setimagePingingTelkomEquipmentCompleted();
         try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         generateReport ();
-        Main.setimageGeneratingReportCompleted ();
+        GUI.setimageGeneratingReportCompleted ();
         try {Thread.sleep(3000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-        Main.setimageFinishedCompleted();
-        InterfaceManagement.running = false;
+        GUI.setimageFinishedCompleted();
+        GUICron.running = false;
     }
 
 //PINGS GATEWAY
@@ -114,7 +116,7 @@ public class Report implements Runnable {
 //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI
                writerUnformatted.println (intelReport);
                writerFormatted.println (intelReport);
-               Main.fieldResults.setText(intelReport);
+               GUI.fieldResults.setText(intelReport);
 //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI                
                 
 //ATTACHING DETAILED REPORT
@@ -132,8 +134,8 @@ public class Report implements Runnable {
 //SAVE AS TMP AND PARSE TO MAIN THREAD                
                 writerUnformatted.close();
                 writerFormatted.close();
-                Main.tempFilePathUnformatted = tempUnformatted.getAbsolutePath();
-                Main.tempFilePathFormatted = tempFormatted.getAbsolutePath();
+                GUI.tempFilePathUnformatted = tempUnformatted.getAbsolutePath();
+                GUI.tempFilePathFormatted = tempFormatted.getAbsolutePath();
 //SAVE AS TMP AND PARSE TO MAIN THREAD     
             } catch (IOException ex) {}
    }

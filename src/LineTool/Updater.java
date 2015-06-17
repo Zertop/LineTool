@@ -1,3 +1,5 @@
+//Zertop™
+//www.zertop.com
 package LineTool;
 
 import java.awt.Desktop;
