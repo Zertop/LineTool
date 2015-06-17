@@ -2,14 +2,14 @@
 //www.zertop.com
 package LineTool;
 
-import Reporting.Report;
+import Reporting.GenReport;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
 public class GUI extends javax.swing.JFrame {
 //VARIABLES
-        Report reportInstance = new Report ();
+        GenReport reportInstance = new GenReport ();
         Thread reportThread = new Thread (reportInstance);
         
         GUICron GUICronInstance = new GUICron ();
@@ -17,17 +17,8 @@ public class GUI extends javax.swing.JFrame {
         
         static String tempFilePathUnformatted;
         static String tempFilePathFormatted;
-//VARIABLES        
-    public GUI() {
-        initComponents();
-        MainPanel.setVisible (true);
-        TestPanel.setVisible(false);
-        CompletedPanel.setVisible(false);
-        ResultsPanel.setVisible (false);
-        Updater.check();
-    }
 //VARIABLES
-    
+        
 //GETS AND SETS    
     public static void setimagePingingTelkomEquipmentCompleted ()
     {
@@ -59,6 +50,16 @@ public class GUI extends javax.swing.JFrame {
         tempFilePathFormatted = fP;
     }
 //GETS AND SETS   
+    
+    public GUI() {
+        initComponents();
+        versionLable.setText("Version: "+Information.getVersion());
+        MainPanel.setVisible (true);
+        TestPanel.setVisible(false);
+        CompletedPanel.setVisible(false);
+        ResultsPanel.setVisible (false);
+        Updater.check();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,6 +70,7 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         MainPanel = new javax.swing.JPanel();
+        versionLable = new javax.swing.JLabel();
         ImageLogo = new javax.swing.JLabel();
         LabelBeginTests = new javax.swing.JLabel();
         ButtonPower = new javax.swing.JLabel();
@@ -84,8 +86,8 @@ public class GUI extends javax.swing.JFrame {
         lableFinished = new javax.swing.JLabel();
         imageFinishedFalse = new javax.swing.JLabel();
         imageFinishedTrue = new javax.swing.JLabel();
-        ImageLogo1 = new javax.swing.JLabel();
-        ImageBack1 = new javax.swing.JLabel();
+        ImageLogo4 = new javax.swing.JLabel();
+        ImageBack4 = new javax.swing.JLabel();
         CompletedPanel = new javax.swing.JPanel();
         imageOpenResultsFormatted = new javax.swing.JLabel();
         LabelOpenResultsFormatted = new javax.swing.JLabel();
@@ -94,35 +96,46 @@ public class GUI extends javax.swing.JFrame {
         labelRunningTests1 = new javax.swing.JLabel();
         LabelOpenResultsUnformatted = new javax.swing.JLabel();
         imageOpenResultsUnformatted = new javax.swing.JLabel();
-        ImageLogo2 = new javax.swing.JLabel();
-        ImageBack2 = new javax.swing.JLabel();
+        ImageLogo5 = new javax.swing.JLabel();
+        ImageBack5 = new javax.swing.JLabel();
         ResultsPanel = new javax.swing.JPanel();
         ImageReturn = new javax.swing.JLabel();
         fieldResultsScroll = new javax.swing.JScrollPane();
         fieldResults = new javax.swing.JTextArea();
         labelResults = new javax.swing.JLabel();
-        ImageLogo3 = new javax.swing.JLabel();
-        ImageBack3 = new javax.swing.JLabel();
+        ImageLogo1 = new javax.swing.JLabel();
+        ImageBack1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Zertop's LineTool");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(600, 400));
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(650, 450));
+        setName("Zertop's LineTool"); // NOI18N
+        setPreferredSize(null);
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
-        MainPanel.setMaximumSize(new java.awt.Dimension(600, 400));
-        MainPanel.setMinimumSize(new java.awt.Dimension(600, 400));
-        MainPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+        MainPanel.setMaximumSize(new java.awt.Dimension(650, 450));
+        MainPanel.setMinimumSize(new java.awt.Dimension(650, 450));
+        MainPanel.setPreferredSize(new java.awt.Dimension(650, 450));
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        versionLable.setForeground(new java.awt.Color(255, 255, 255));
+        versionLable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        versionLable.setText("Version: ");
+        MainPanel.add(versionLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 100, -1));
+
         ImageLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
-        MainPanel.add(ImageLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        MainPanel.add(ImageLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         LabelBeginTests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         LabelBeginTests.setForeground(new java.awt.Color(255, 255, 255));
         LabelBeginTests.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelBeginTests.setText("Begin Ping Tests");
-        MainPanel.add(LabelBeginTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 110, 20));
+        MainPanel.add(LabelBeginTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 110, 20));
 
         ButtonPower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/power.png"))); // NOI18N
         ButtonPower.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,72 +143,72 @@ public class GUI extends javax.swing.JFrame {
                 ButtonPowerMouseClicked(evt);
             }
         });
-        MainPanel.add(ButtonPower, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        MainPanel.add(ButtonPower, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
         ImageBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
-        MainPanel.add(ImageBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, -50, -1, -1));
+        MainPanel.add(ImageBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -60, -1, -1));
 
-        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 410));
+        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
 
         TestPanel.setBackground(new java.awt.Color(255, 255, 255));
-        TestPanel.setMaximumSize(new java.awt.Dimension(600, 400));
-        TestPanel.setMinimumSize(new java.awt.Dimension(600, 400));
-        TestPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+        TestPanel.setMaximumSize(new java.awt.Dimension(650, 450));
+        TestPanel.setMinimumSize(new java.awt.Dimension(650, 450));
+        TestPanel.setPreferredSize(new java.awt.Dimension(650, 450));
         TestPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelRunningTests.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
         labelRunningTests.setForeground(new java.awt.Color(255, 255, 255));
         labelRunningTests.setText("Running Tests");
-        TestPanel.add(labelRunningTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        TestPanel.add(labelRunningTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
         labelPingingTelkomEquipment.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         labelPingingTelkomEquipment.setForeground(new java.awt.Color(255, 255, 255));
         labelPingingTelkomEquipment.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelPingingTelkomEquipment.setText("Pinging Telkom Equipment: ");
-        TestPanel.add(labelPingingTelkomEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 210, -1));
+        TestPanel.add(labelPingingTelkomEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 210, -1));
 
         imagePingingTelkomEquipmentFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
-        TestPanel.add(imagePingingTelkomEquipmentFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
+        TestPanel.add(imagePingingTelkomEquipmentFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
 
         imagePingingTelkomEquipmentTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
-        TestPanel.add(imagePingingTelkomEquipmentTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
+        TestPanel.add(imagePingingTelkomEquipmentTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
 
         labelGeneratingReport.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         labelGeneratingReport.setForeground(new java.awt.Color(255, 255, 255));
         labelGeneratingReport.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelGeneratingReport.setText("Generating Report:");
-        TestPanel.add(labelGeneratingReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 210, -1));
+        TestPanel.add(labelGeneratingReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 210, -1));
 
         imageGeneratingReportFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
-        TestPanel.add(imageGeneratingReportFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, -1, -1));
+        TestPanel.add(imageGeneratingReportFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         imageGeneratingReportTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
-        TestPanel.add(imageGeneratingReportTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, -1, -1));
+        TestPanel.add(imageGeneratingReportTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         lableFinished.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lableFinished.setForeground(new java.awt.Color(255, 255, 255));
         lableFinished.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lableFinished.setText("Finished:");
-        TestPanel.add(lableFinished, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 210, -1));
+        TestPanel.add(lableFinished, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 210, -1));
 
         imageFinishedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
-        TestPanel.add(imageFinishedFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
+        TestPanel.add(imageFinishedFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
         imageFinishedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
-        TestPanel.add(imageFinishedTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
+        TestPanel.add(imageFinishedTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
-        ImageLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
-        TestPanel.add(ImageLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        ImageLogo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
+        TestPanel.add(ImageLogo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
-        ImageBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
-        TestPanel.add(ImageBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, -50, -1, -1));
+        ImageBack4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
+        TestPanel.add(ImageBack4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -60, -1, -1));
 
-        getContentPane().add(TestPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 410));
+        getContentPane().add(TestPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
 
         CompletedPanel.setBackground(new java.awt.Color(255, 255, 255));
-        CompletedPanel.setMaximumSize(new java.awt.Dimension(600, 400));
-        CompletedPanel.setMinimumSize(new java.awt.Dimension(600, 400));
-        CompletedPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+        CompletedPanel.setMaximumSize(new java.awt.Dimension(650, 450));
+        CompletedPanel.setMinimumSize(new java.awt.Dimension(650, 450));
+        CompletedPanel.setPreferredSize(new java.awt.Dimension(650, 450));
         CompletedPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imageOpenResultsFormatted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/clip.png"))); // NOI18N
@@ -204,12 +217,12 @@ public class GUI extends javax.swing.JFrame {
                 imageOpenResultsFormattedMouseClicked(evt);
             }
         });
-        CompletedPanel.add(imageOpenResultsFormatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, 50));
+        CompletedPanel.add(imageOpenResultsFormatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, 50));
 
         LabelOpenResultsFormatted.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         LabelOpenResultsFormatted.setForeground(new java.awt.Color(255, 255, 255));
         LabelOpenResultsFormatted.setText("Open Results in Text File (Formatted for Forum)");
-        CompletedPanel.add(LabelOpenResultsFormatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 340, 20));
+        CompletedPanel.add(LabelOpenResultsFormatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 340, 20));
 
         imageDisplayResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/monitor.png"))); // NOI18N
         imageDisplayResults.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,21 +230,21 @@ public class GUI extends javax.swing.JFrame {
                 imageDisplayResultsMouseClicked(evt);
             }
         });
-        CompletedPanel.add(imageDisplayResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, 50));
+        CompletedPanel.add(imageDisplayResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, 50));
 
         LabelDisplayResults.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         LabelDisplayResults.setForeground(new java.awt.Color(255, 255, 255));
         LabelDisplayResults.setText("Display Results on Screen");
-        CompletedPanel.add(LabelDisplayResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 190, 20));
+        CompletedPanel.add(LabelDisplayResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 190, 20));
 
         labelRunningTests1.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
         labelRunningTests1.setText("Tests Completed");
-        CompletedPanel.add(labelRunningTests1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        CompletedPanel.add(labelRunningTests1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, -1));
 
         LabelOpenResultsUnformatted.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         LabelOpenResultsUnformatted.setForeground(new java.awt.Color(255, 255, 255));
         LabelOpenResultsUnformatted.setText("Open Results  in Text File (Plain)");
-        CompletedPanel.add(LabelOpenResultsUnformatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 240, 20));
+        CompletedPanel.add(LabelOpenResultsUnformatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 240, 20));
 
         imageOpenResultsUnformatted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/clipextra.png"))); // NOI18N
         imageOpenResultsUnformatted.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -239,20 +252,21 @@ public class GUI extends javax.swing.JFrame {
                 imageOpenResultsUnformattedMouseClicked(evt);
             }
         });
-        CompletedPanel.add(imageOpenResultsUnformatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, 50));
+        CompletedPanel.add(imageOpenResultsUnformatted, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, 50));
 
-        ImageLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
-        CompletedPanel.add(ImageLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        ImageLogo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
+        CompletedPanel.add(ImageLogo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
-        ImageBack2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
-        CompletedPanel.add(ImageBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, -50, -1, -1));
+        ImageBack5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
+        CompletedPanel.add(ImageBack5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -60, -1, -1));
 
-        getContentPane().add(CompletedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
+        getContentPane().add(CompletedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
+        CompletedPanel.getAccessibleContext().setAccessibleName("");
 
         ResultsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        ResultsPanel.setMaximumSize(new java.awt.Dimension(600, 400));
-        ResultsPanel.setMinimumSize(new java.awt.Dimension(600, 400));
-        ResultsPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+        ResultsPanel.setMaximumSize(new java.awt.Dimension(650, 450));
+        ResultsPanel.setMinimumSize(new java.awt.Dimension(650, 450));
+        ResultsPanel.setPreferredSize(new java.awt.Dimension(650, 450));
         ResultsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ImageReturn.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -282,19 +296,19 @@ public class GUI extends javax.swing.JFrame {
         fieldResults.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         fieldResultsScroll.setViewportView(fieldResults);
 
-        ResultsPanel.add(fieldResultsScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 450, 180));
+        ResultsPanel.add(fieldResultsScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 450, 180));
 
         labelResults.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
         labelResults.setText("Results");
-        ResultsPanel.add(labelResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+        ResultsPanel.add(labelResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, -1, -1));
 
-        ImageLogo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
-        ResultsPanel.add(ImageLogo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        ImageLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
+        ResultsPanel.add(ImageLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
-        ImageBack3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
-        ResultsPanel.add(ImageBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, -50, -1, -1));
+        ImageBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
+        ResultsPanel.add(ImageBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -60, -1, -1));
 
-        getContentPane().add(ResultsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
+        getContentPane().add(ResultsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -375,12 +389,12 @@ public class GUI extends javax.swing.JFrame {
     static javax.swing.JPanel CompletedPanel;
     private javax.swing.JLabel ImageBack;
     private javax.swing.JLabel ImageBack1;
-    private javax.swing.JLabel ImageBack2;
-    private javax.swing.JLabel ImageBack3;
+    private javax.swing.JLabel ImageBack4;
+    private javax.swing.JLabel ImageBack5;
     private javax.swing.JLabel ImageLogo;
     private javax.swing.JLabel ImageLogo1;
-    private javax.swing.JLabel ImageLogo2;
-    private javax.swing.JLabel ImageLogo3;
+    private javax.swing.JLabel ImageLogo4;
+    private javax.swing.JLabel ImageLogo5;
     private javax.swing.JLabel ImageReturn;
     private javax.swing.JLabel LabelBeginTests;
     private javax.swing.JLabel LabelDisplayResults;
@@ -406,5 +420,6 @@ public class GUI extends javax.swing.JFrame {
     static javax.swing.JLabel labelRunningTests;
     static javax.swing.JLabel labelRunningTests1;
     private javax.swing.JLabel lableFinished;
+    private javax.swing.JLabel versionLable;
     // End of variables declaration//GEN-END:variables
 }
