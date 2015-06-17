@@ -14,12 +14,11 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 public class Updater {
-    private static final int currentVersion = 21;
     private static int availableVersion = getAvailableVersion();
     
     public static void check ()
     {
-        if (availableVersion > currentVersion)
+        if (availableVersion > Information.getVersion())
         {
             int option = JOptionPane.showConfirmDialog(null, "There is a new version available. Would you like to go online to download the latest version?");
             

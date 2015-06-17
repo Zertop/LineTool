@@ -4,6 +4,7 @@ package LineTool;
 
 import Reporting.GenReport;
 import java.awt.Desktop;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
@@ -114,7 +115,6 @@ public class GUI extends javax.swing.JFrame {
         setName("Zertop's LineTool"); // NOI18N
         setPreferredSize(null);
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -123,6 +123,7 @@ public class GUI extends javax.swing.JFrame {
         MainPanel.setPreferredSize(new java.awt.Dimension(650, 450));
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        versionLable.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         versionLable.setForeground(new java.awt.Color(255, 255, 255));
         versionLable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         versionLable.setText("Version: ");
