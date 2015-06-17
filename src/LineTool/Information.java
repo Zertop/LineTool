@@ -4,7 +4,7 @@ package LineTool;
 public class Information {
     
 //Important Information
-    private static int version = 212;
+    private static int version = 211;
 //Important Information    
     
     public static int getVersion ()
