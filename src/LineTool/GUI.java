@@ -11,8 +11,8 @@ public class GUI extends javax.swing.JFrame {
         Report reportInstance = new Report ();
         Thread reportThread = new Thread (reportInstance);
         
-        GUICron InterfaceManagementInstance = new GUICron ();
-        Thread InterfaceManagementThread = new Thread (InterfaceManagementInstance);
+        GUICron GUICronInstance = new GUICron ();
+        Thread GUICronThread = new Thread (GUICronInstance);
         
         static String tempFilePathUnformatted;
         static String tempFilePathFormatted;
@@ -286,7 +286,7 @@ public class GUI extends javax.swing.JFrame {
         if (!reportThread.isAlive())
         {
         reportThread.start();
-        InterfaceManagementThread.start();
+        GUICronThread.start();
         }
         MainPanel.setVisible (false);
         TestPanel.setVisible(true);
