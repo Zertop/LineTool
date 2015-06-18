@@ -2,9 +2,10 @@
 //www.zertop.com
 package LineTool;
 
+import Launcher.Information;
+import Launcher.Updater;
 import Reporting.GenReport;
 import java.awt.Desktop;
-import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
@@ -59,7 +60,6 @@ public class GUI extends javax.swing.JFrame {
         TestPanel.setVisible(false);
         CompletedPanel.setVisible(false);
         ResultsPanel.setVisible (false);
-        Updater.check();
     }
     /**
      * This method is called from within the constructor to initialize the form.

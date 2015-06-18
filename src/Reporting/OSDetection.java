@@ -5,9 +5,6 @@ public class OSDetection {
     
     private static String OS = System.getProperty("os.name").toLowerCase();
 
-    public static void main(String[] args) {
-    }
-
     public static boolean isWindows() {
         return (OS.indexOf("win") >= 0);
     }
