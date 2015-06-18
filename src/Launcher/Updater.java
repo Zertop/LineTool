@@ -32,7 +32,7 @@ public class Updater implements Runnable {
     private void upgradeProgram ()
     {
         try {
-            URL link = new URL(Information.getReleasesURL() + "LineToolV" + availableVersion + ".jar");
+            URL link = new URL(Information.getReleasesURL());
             File newVersionFile = File.createTempFile("LineTool", ".jar");
             
             //DOWNLOAD CODE

@@ -3,7 +3,6 @@
 package LineTool;
 
 import Launcher.Information;
-import Launcher.Updater;
 import Reporting.GenReport;
 import java.awt.Desktop;
 import java.io.File;
@@ -22,6 +21,11 @@ public class GUI extends javax.swing.JFrame {
 //VARIABLES
         
 //GETS AND SETS    
+    public static void setimageDeterminingIPToPingCompleted ()
+    {
+        imageDeterminingIPToPingFalse.setVisible (false);
+    }
+        
     public static void setimagePingingTelkomEquipmentCompleted ()
     {
         imagePingingTelkomEquipmentFalse.setVisible (false);
@@ -54,6 +58,7 @@ public class GUI extends javax.swing.JFrame {
 //GETS AND SETS   
     
     public GUI() {
+        System.out.println("Zertop's LineTool Log: V"+Information.getVersion());
         initComponents();
         versionLable.setText("Version: "+Information.getVersion());
         MainPanel.setVisible (true);
@@ -78,6 +83,9 @@ public class GUI extends javax.swing.JFrame {
         ImageBack = new javax.swing.JLabel();
         TestPanel = new javax.swing.JPanel();
         labelRunningTests = new javax.swing.JLabel();
+        labelDeterminingIPToPing = new javax.swing.JLabel();
+        imageDeterminingIPToPingFalse = new javax.swing.JLabel();
+        imageDeterminingIPToPingTrue = new javax.swing.JLabel();
         labelPingingTelkomEquipment = new javax.swing.JLabel();
         imagePingingTelkomEquipmentFalse = new javax.swing.JLabel();
         imagePingingTelkomEquipmentTrue = new javax.swing.JLabel();
@@ -110,10 +118,8 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zertop's LineTool");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(650, 450));
         setName("Zertop's LineTool"); // NOI18N
-        setPreferredSize(null);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -162,41 +168,53 @@ public class GUI extends javax.swing.JFrame {
         labelRunningTests.setText("Running Tests");
         TestPanel.add(labelRunningTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
+        labelDeterminingIPToPing.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        labelDeterminingIPToPing.setForeground(new java.awt.Color(255, 255, 255));
+        labelDeterminingIPToPing.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelDeterminingIPToPing.setText("Determining IP Address to Ping:");
+        TestPanel.add(labelDeterminingIPToPing, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 210, -1));
+
+        imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
+        TestPanel.add(imageDeterminingIPToPingFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
+
+        imageDeterminingIPToPingTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
+        TestPanel.add(imageDeterminingIPToPingTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
+
         labelPingingTelkomEquipment.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         labelPingingTelkomEquipment.setForeground(new java.awt.Color(255, 255, 255));
         labelPingingTelkomEquipment.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelPingingTelkomEquipment.setText("Pinging Telkom Equipment: ");
-        TestPanel.add(labelPingingTelkomEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 210, -1));
+        labelPingingTelkomEquipment.setText("Pinging Telkom Equipment:");
+        TestPanel.add(labelPingingTelkomEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 210, -1));
 
         imagePingingTelkomEquipmentFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
-        TestPanel.add(imagePingingTelkomEquipmentFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
+        TestPanel.add(imagePingingTelkomEquipmentFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         imagePingingTelkomEquipmentTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
-        TestPanel.add(imagePingingTelkomEquipmentTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
+        TestPanel.add(imagePingingTelkomEquipmentTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         labelGeneratingReport.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         labelGeneratingReport.setForeground(new java.awt.Color(255, 255, 255));
         labelGeneratingReport.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelGeneratingReport.setText("Generating Report:");
-        TestPanel.add(labelGeneratingReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 210, -1));
+        TestPanel.add(labelGeneratingReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 210, -1));
 
         imageGeneratingReportFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
-        TestPanel.add(imageGeneratingReportFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
+        TestPanel.add(imageGeneratingReportFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
         imageGeneratingReportTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
-        TestPanel.add(imageGeneratingReportTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
+        TestPanel.add(imageGeneratingReportTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
         lableFinished.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lableFinished.setForeground(new java.awt.Color(255, 255, 255));
         lableFinished.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lableFinished.setText("Finished:");
-        TestPanel.add(lableFinished, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 210, -1));
+        TestPanel.add(lableFinished, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 210, -1));
 
         imageFinishedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/cross.png"))); // NOI18N
-        TestPanel.add(imageFinishedFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
+        TestPanel.add(imageFinishedFalse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, -1, -1));
 
         imageFinishedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/tick.png"))); // NOI18N
-        TestPanel.add(imageFinishedTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
+        TestPanel.add(imageFinishedTrue, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, -1, -1));
 
         ImageLogo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
         TestPanel.add(ImageLogo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
@@ -406,6 +424,8 @@ public class GUI extends javax.swing.JFrame {
     static javax.swing.JPanel TestPanel;
     static javax.swing.JTextArea fieldResults;
     private javax.swing.JScrollPane fieldResultsScroll;
+    static javax.swing.JLabel imageDeterminingIPToPingFalse;
+    static javax.swing.JLabel imageDeterminingIPToPingTrue;
     private javax.swing.JLabel imageDisplayResults;
     static javax.swing.JLabel imageFinishedFalse;
     static javax.swing.JLabel imageFinishedTrue;
@@ -415,6 +435,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel imageOpenResultsUnformatted;
     static javax.swing.JLabel imagePingingTelkomEquipmentFalse;
     static javax.swing.JLabel imagePingingTelkomEquipmentTrue;
+    private javax.swing.JLabel labelDeterminingIPToPing;
     private javax.swing.JLabel labelGeneratingReport;
     private javax.swing.JLabel labelPingingTelkomEquipment;
     static javax.swing.JLabel labelResults;

@@ -6,7 +6,6 @@ import LineTool.GUI;
 import LineTool.GUICron;
 import java.io.*;
 import java.util.Date;
-import java.util.regex.*;
 
 public class GenReport implements Runnable {
 //PERM VARIABLES
@@ -16,7 +15,7 @@ public class GenReport implements Runnable {
         
     public void run ()
     {
-        pingGateway();
+        runTests();
         GUI.setimagePingingTelkomEquipmentCompleted();
         try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         generateReport ();
@@ -27,9 +26,9 @@ public class GenReport implements Runnable {
     }
 
 //PINGS IP
-   public static void pingGateway ()
+   public static void runTests ()
     {
-        pingResults = Tasks.pingIP (Tasks.determineIP(),30);
+        pingResults = Tools.pingIP (Tools.determineIP(),30);
     }
 //PINGS IP
 
@@ -139,6 +138,4 @@ public class GenReport implements Runnable {
             } catch (IOException ex) {}
    }
 //GENERATE REPORT
-   
- 
 }
