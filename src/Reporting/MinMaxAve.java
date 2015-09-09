@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 
 public class MinMaxAve {
 //VARIABLES        
-    static int maxPing = 0;
-    static int minPing = 0;
-    static int avePing = 0;  
-    static int packetLoss = 0;
+    private static int maxPing = 0;
+    private static int minPing = 0;
+    private static int avePing = 0;  
+    private static int packetLoss = 0;
 //VARIABLES
     
 //GETS

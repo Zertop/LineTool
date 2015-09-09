@@ -13,11 +13,7 @@ public class GUICron implements Runnable {
         
         if (!running)
         {
-            GUI.labelRunningTests.setText ("Tests Finished (3)");
-            try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-            GUI.labelRunningTests.setText ("Tests Finished (2)");
-            try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-            GUI.labelRunningTests.setText ("Tests Finished (1)");
+            GUI.labelRunningTests.setText ("Tests Finished");
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
             GUI.TestPanel.setVisible (false);
             GUI.CompletedPanel.setVisible (true);

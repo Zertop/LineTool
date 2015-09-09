@@ -2,16 +2,14 @@
 //www.zertop.com
 package LineTool;
 
-import Launcher.Information;
-import Reporting.GenReport;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
 public class GUI extends javax.swing.JFrame {
 //VARIABLES
-        GenReport reportInstance = new GenReport ();
-        Thread reportThread = new Thread (reportInstance);
+        Reporting.GenReport GenReportInstance = new Reporting.GenReport ();
+        Thread GenReportThread = new Thread (GenReportInstance);
         
         GUICron GUICronInstance = new GUICron ();
         Thread GUICronThread = new Thread (GUICronInstance);
@@ -55,12 +53,22 @@ public class GUI extends javax.swing.JFrame {
     {
         tempFilePathFormatted = fP;
     }
+    
+    public static void displayError (String EM)
+    {
+        MainPanel.setVisible(false);
+        TestPanel.setVisible(false);
+        CompletedPanel.setVisible(false);
+        ResultsPanel.setVisible (false);
+        fieldError.setText(EM);
+        ErrorPanel.setVisible(true);
+    }
 //GETS AND SETS   
     
     public GUI() {
-        System.out.println("Zertop's LineTool Log: V"+Information.getVersion());
+        System.out.println("Zertop's LineTool Log: V"+Launcher.Information.getVersion());
         initComponents();
-        versionLable.setText("Version: "+Information.getVersion());
+        versionLable.setText("Version: "+Launcher.Information.getVersion());
         MainPanel.setVisible (true);
         TestPanel.setVisible(false);
         CompletedPanel.setVisible(false);
@@ -114,6 +122,13 @@ public class GUI extends javax.swing.JFrame {
         labelResults = new javax.swing.JLabel();
         ImageLogo1 = new javax.swing.JLabel();
         ImageBack1 = new javax.swing.JLabel();
+        ErrorPanel = new javax.swing.JPanel();
+        ImageReturn1 = new javax.swing.JLabel();
+        fieldResultsScroll1 = new javax.swing.JScrollPane();
+        fieldError = new javax.swing.JTextArea();
+        labelError = new javax.swing.JLabel();
+        ImageLogo3 = new javax.swing.JLabel();
+        ImageBack3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zertop's LineTool");
@@ -329,21 +344,66 @@ public class GUI extends javax.swing.JFrame {
 
         getContentPane().add(ResultsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
 
+        ErrorPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ErrorPanel.setMaximumSize(new java.awt.Dimension(650, 450));
+        ErrorPanel.setMinimumSize(new java.awt.Dimension(650, 450));
+        ErrorPanel.setPreferredSize(new java.awt.Dimension(650, 450));
+        ErrorPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ImageReturn1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        ImageReturn1.setForeground(new java.awt.Color(255, 255, 255));
+        ImageReturn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/return.png"))); // NOI18N
+        ImageReturn1.setText("Go Back");
+        ImageReturn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ImageReturn1MouseClicked(evt);
+            }
+        });
+        ErrorPanel.add(ImageReturn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        fieldResultsScroll1.setBackground(new java.awt.Color(51, 51, 51));
+        fieldResultsScroll1.setBorder(null);
+        fieldResultsScroll1.setOpaque(false);
+
+        fieldError.setEditable(false);
+        fieldError.setBackground(new java.awt.Color(102, 102, 102));
+        fieldError.setColumns(20);
+        fieldError.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        fieldError.setForeground(new java.awt.Color(255, 255, 255));
+        fieldError.setLineWrap(true);
+        fieldError.setRows(5);
+        fieldError.setWrapStyleWord(true);
+        fieldError.setAutoscrolls(false);
+        fieldError.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        fieldResultsScroll1.setViewportView(fieldError);
+
+        ErrorPanel.add(fieldResultsScroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 450, 180));
+
+        labelError.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
+        labelError.setText("ERROR");
+        ErrorPanel.add(labelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, -1, -1));
+
+        ImageLogo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
+        ErrorPanel.add(ImageLogo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+
+        ImageBack3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
+        ErrorPanel.add(ImageBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -60, -1, -1));
+
+        getContentPane().add(ErrorPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
+        ErrorPanel.setVisible(false);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonPowerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonPowerMouseClicked
-        if (!reportThread.isAlive())
-        {
-        reportThread.start();
-        GUICronThread.start();
-        }
+        //Start the program
+        GenReportThread.start(); //Start the GenReport thread
+        GUICronThread.start(); //Start the GUICronThread
         MainPanel.setVisible (false);
         TestPanel.setVisible(true);
         MainPanel.repaint();
         TestPanel.repaint();
-            
     }//GEN-LAST:event_ButtonPowerMouseClicked
 
     private void imageOpenResultsFormattedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageOpenResultsFormattedMouseClicked
@@ -367,6 +427,11 @@ public class GUI extends javax.swing.JFrame {
         CompletedPanel.setVisible(true);
         ResultsPanel.setVisible (false);        // TODO add your handling code here:
     }//GEN-LAST:event_ImageReturnMouseClicked
+
+    private void ImageReturn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageReturn1MouseClicked
+        CompletedPanel.setVisible(true);
+        ResultsPanel.setVisible (false);// TODO add your handling code here:
+    }//GEN-LAST:event_ImageReturn1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -406,24 +471,30 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ButtonPower;
     static javax.swing.JPanel CompletedPanel;
+    static javax.swing.JPanel ErrorPanel;
     private javax.swing.JLabel ImageBack;
     private javax.swing.JLabel ImageBack1;
+    private javax.swing.JLabel ImageBack3;
     private javax.swing.JLabel ImageBack4;
     private javax.swing.JLabel ImageBack5;
     private javax.swing.JLabel ImageLogo;
     private javax.swing.JLabel ImageLogo1;
+    private javax.swing.JLabel ImageLogo3;
     private javax.swing.JLabel ImageLogo4;
     private javax.swing.JLabel ImageLogo5;
     private javax.swing.JLabel ImageReturn;
+    private javax.swing.JLabel ImageReturn1;
     private javax.swing.JLabel LabelBeginTests;
     private javax.swing.JLabel LabelDisplayResults;
     private javax.swing.JLabel LabelOpenResultsFormatted;
     private javax.swing.JLabel LabelOpenResultsUnformatted;
-    private javax.swing.JPanel MainPanel;
+    private static javax.swing.JPanel MainPanel;
     static javax.swing.JPanel ResultsPanel;
     static javax.swing.JPanel TestPanel;
+    static javax.swing.JTextArea fieldError;
     static javax.swing.JTextArea fieldResults;
     private javax.swing.JScrollPane fieldResultsScroll;
+    private javax.swing.JScrollPane fieldResultsScroll1;
     static javax.swing.JLabel imageDeterminingIPToPingFalse;
     static javax.swing.JLabel imageDeterminingIPToPingTrue;
     private javax.swing.JLabel imageDisplayResults;
@@ -436,6 +507,7 @@ public class GUI extends javax.swing.JFrame {
     static javax.swing.JLabel imagePingingTelkomEquipmentFalse;
     static javax.swing.JLabel imagePingingTelkomEquipmentTrue;
     private javax.swing.JLabel labelDeterminingIPToPing;
+    static javax.swing.JLabel labelError;
     private javax.swing.JLabel labelGeneratingReport;
     private javax.swing.JLabel labelPingingTelkomEquipment;
     static javax.swing.JLabel labelResults;

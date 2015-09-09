@@ -2,7 +2,6 @@
 //www.zertop.com
 package Reporting;
 
-import LineTool.GUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,7 +36,7 @@ public class Tools {
             IP = "155.239.255.250";
         }
         System.out.println ("Using IP: "+IP);
-        GUI.setimageDeterminingIPToPingCompleted();
+        LineTool.GUI.setimageDeterminingIPToPingCompleted();
         return IP;
     }
 //DETERMINE CORRECT IP

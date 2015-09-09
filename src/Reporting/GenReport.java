@@ -2,8 +2,6 @@
 //www.zertop.com
 package Reporting;
 
-import LineTool.GUI;
-import LineTool.GUICron;
 import java.io.*;
 import java.util.Date;
 
@@ -11,18 +9,26 @@ public class GenReport implements Runnable {
 //PERM VARIABLES
         static String pingResults;
         static String intelReport = "";
+        static MinMaxAve testIP;
 //PERM VARIABLES
         
     public void run ()
     {
         runTests();
-        GUI.setimagePingingTelkomEquipmentCompleted();
+        LineTool.GUI.setimagePingingTelkomEquipmentCompleted();
         try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         generateReport ();
-        GUI.setimageGeneratingReportCompleted ();
+        LineTool.GUI.setimageGeneratingReportCompleted ();
         try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-        GUI.setimageFinishedCompleted();
-        GUICron.setRunning (false);
+        LineTool.GUI.setimageFinishedCompleted();
+        if (totalPacketLoss())
+        {
+            LineTool.GUI.displayError("The program was unable to ping an IP. \nPlease ensure that you are connected to the internet!");
+        }
+        else
+        {
+            LineTool.GUICron.setRunning (false);
+        }
     }
 
 //PINGS IP
@@ -31,6 +37,13 @@ public class GenReport implements Runnable {
         pingResults = Tools.pingIP (Tools.determineIP(),30);
     }
 //PINGS IP
+   
+//CHECK TOTAL PACKET LOSS
+   public static boolean totalPacketLoss()
+   {
+                return testIP.getPacketLoss() == 100;
+   }
+//CHECK TOTAL PACKET LOSS
 
 //GENERATE REPORT
    public static void generateReport ()
@@ -46,7 +59,7 @@ public class GenReport implements Runnable {
 //INITIALISE WRITERS
                 
 //GENERATE MIN MAX AVE VARIABLES
-                MinMaxAve testIP = new MinMaxAve (pingResults);
+                testIP = new MinMaxAve (pingResults);
 //GENERATE MIN MAX AVE VARIABLES
                 
 //GENERATE TEXT FILE HEADERS
@@ -114,7 +127,7 @@ public class GenReport implements Runnable {
 //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI
                writerUnformatted.println (intelReport);
                writerFormatted.println (intelReport);
-               GUI.setFieldResults(intelReport);
+               LineTool.GUI.setFieldResults(intelReport);
 //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI                
                 
 //ATTACHING DETAILED REPORT
@@ -132,9 +145,9 @@ public class GenReport implements Runnable {
 //SAVE AS TMP AND PARSE TO MAIN THREAD                
                 writerUnformatted.close();
                 writerFormatted.close();
-                GUI.setTempFilePathUnformatted (tempUnformatted.getAbsolutePath());
-                GUI.setTempFilePathFormatted (tempFormatted.getAbsolutePath());
-//SAVE AS TMP AND PARSE TO MAIN THREAD     
+                LineTool.GUI.setTempFilePathUnformatted (tempUnformatted.getAbsolutePath());
+                LineTool.GUI.setTempFilePathFormatted (tempFormatted.getAbsolutePath());
+//SAVE AS TMP AND PARSE TO MAIN THREAD
             } catch (IOException ex) {}
    }
 //GENERATE REPORT
