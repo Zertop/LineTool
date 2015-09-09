@@ -36,6 +36,7 @@ public class Tools {
             IP = "155.239.255.250";
         }
         System.out.println ("Using IP: "+IP);
+        try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
         LineTool.GUI.setimageDeterminingIPToPingCompleted();
         return IP;
     }
@@ -102,4 +103,9 @@ public class Tools {
     return output;
     }
 //PING IP ADDRESS
+    
+    public static String getLineBreak()
+    {
+        return System.getProperty("line.separator");
+    }
 }

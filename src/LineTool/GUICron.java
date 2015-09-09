@@ -10,14 +10,6 @@ public class GUICron implements Runnable {
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
             RunningTestsAnimation ();
         }
-        
-        if (!running)
-        {
-            GUI.labelRunningTests.setText ("Tests Finished");
-            try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-            GUI.TestPanel.setVisible (false);
-            GUI.CompletedPanel.setVisible (true);
-        }
     }
     
     public static void setRunning (boolean r)

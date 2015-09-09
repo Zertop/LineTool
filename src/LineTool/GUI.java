@@ -470,8 +470,8 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ButtonPower;
-    static javax.swing.JPanel CompletedPanel;
-    static javax.swing.JPanel ErrorPanel;
+    public static javax.swing.JPanel CompletedPanel;
+    public static javax.swing.JPanel ErrorPanel;
     private javax.swing.JLabel ImageBack;
     private javax.swing.JLabel ImageBack1;
     private javax.swing.JLabel ImageBack3;
@@ -488,9 +488,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel LabelDisplayResults;
     private javax.swing.JLabel LabelOpenResultsFormatted;
     private javax.swing.JLabel LabelOpenResultsUnformatted;
-    private static javax.swing.JPanel MainPanel;
-    static javax.swing.JPanel ResultsPanel;
-    static javax.swing.JPanel TestPanel;
+    public static javax.swing.JPanel MainPanel;
+    public static javax.swing.JPanel ResultsPanel;
+    public static javax.swing.JPanel TestPanel;
     static javax.swing.JTextArea fieldError;
     static javax.swing.JTextArea fieldResults;
     private javax.swing.JScrollPane fieldResultsScroll;
@@ -511,7 +511,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelGeneratingReport;
     private javax.swing.JLabel labelPingingTelkomEquipment;
     static javax.swing.JLabel labelResults;
-    static javax.swing.JLabel labelRunningTests;
+    public static javax.swing.JLabel labelRunningTests;
     static javax.swing.JLabel labelRunningTests1;
     private javax.swing.JLabel lableFinished;
     private javax.swing.JLabel versionLable;
