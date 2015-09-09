@@ -52,14 +52,14 @@ public class Tools {
 
                 if(OSDetection.isWindows()) 
                 {   
-                    tracecmd = "tracert -h "+hops+" " + host; // For Windows
+                    tracecmd = "tracert -h "+hops+ host; // For Windows
                     Process trace = Runtime.getRuntime().exec(tracecmd); 
                     trace.waitFor(); 
                     BufferedReader reader=new BufferedReader(new InputStreamReader (trace.getInputStream()));
                     String line;
                     while((line = reader.readLine()) != null) 
                     { 
-                        output = output + "\n"+line;
+                        output = output +Reporting.Tools.getLineBreak()+line;
                     }
                 }
                 else 
@@ -83,11 +83,11 @@ public class Tools {
 
                 if(OSDetection.isWindows()) 
                 {   
-                    pingcmd = "ping -n "+num+" " + host; // For Windows
+                    pingcmd = "ping -n "+num + " " + host; // For Windows
                 }  
                 else 
                 {
-                    pingcmd = "ping -c "+num+" " + host; // For Linux and OSX
+                    pingcmd = "ping -c "+num+ " " +host; // For Linux and OSX
                 }
                 
                 Process ping = Runtime.getRuntime().exec(pingcmd); 
@@ -96,7 +96,7 @@ public class Tools {
                 String line;
                 while((line = reader.readLine()) != null) 
                 { 
-                    output = output + "\n"+line;
+                    output = output+line+Reporting.Tools.getLineBreak();
                 } 
             }
             catch(IOException | InterruptedException e1) {} 

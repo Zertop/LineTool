@@ -25,7 +25,7 @@ public class GenReport implements Runnable {
         //Finish. Check for total packet loss else move to results screen
         LineTool.GUI.setimageFinishedCompleted();
         if (totalPacketLoss()){
-            LineTool.GUI.displayError("The program was unable to ping an IP. \nPlease ensure that you are connected to the internet!");}
+            LineTool.GUI.displayError("The program was unable to ping an IP. "+Reporting.Tools.getLineBreak()+"Please ensure that you are connected to the internet!");}
         else{
             LineTool.GUI.labelRunningTests.setText ("Tests Finished");
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
@@ -59,27 +59,27 @@ public class GenReport implements Runnable {
         testIP = new MinMaxAve (pingResults);
 
         //GENERATE TEXT FILE HEADERS
-        writerUnformatted.println ("Zertop's \"Is it my Line\" Results" + "\nDate/Time: " + new Date());
-        writerUnformatted.println ("\nBasic Report:");
+        writerUnformatted.println ("Zertop's \"Is it my Line\" Results" +Reporting.Tools.getLineBreak()+"Date/Time: " + new Date());
+        writerUnformatted.println (""+Reporting.Tools.getLineBreak()+"Basic Report:");
         writerUnformatted.println ("");
 
-        writerFormatted.println ("[B]Zertop's \"Is it my Line\" Results" + "\nDate/Time: " + new Date()+"[/B]");
-        writerFormatted.println ("[I][B]\nBasic Report:[/B][/I]");
+        writerFormatted.println ("[B]Zertop's \"Is it my Line\" Results" +Reporting.Tools.getLineBreak()+"Date/Time: " + new Date()+"[/B]");
+        writerFormatted.println ("[I][B]"+Reporting.Tools.getLineBreak()+"Basic Report:[/B][/I]");
         writerFormatted.println ("");
 
         //GENERATE INTELLIGENT REPORT HEADERS
         intelReport = intelReport + ("Your packet loss was "+testIP.getPacketLoss()+"%.");
-        intelReport = intelReport + "\n" +  ("Your average ping was "+testIP.getAvePing()+"ms.");
-        intelReport = intelReport + "\n" +  ("Your maximum ping was "+testIP.getMaxPing()+"ms.");
-        intelReport = intelReport + "\n" +  ("");
+        intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Your average ping was "+testIP.getAvePing()+"ms.");
+        intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Your maximum ping was "+testIP.getMaxPing()+"ms.");
+        intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("");
 
         //PACKET LOSS REPORT                
         if (testIP.getPacketLoss() > 20)
         {
-            intelReport = intelReport + "\n" +  ("You have serious packet loss. Please post these results to the forum for advice.");
+            intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("You have serious packet loss. Please post these results to the forum for advice.");
         } else if (testIP.getPacketLoss() > 1)
         {
-            intelReport = intelReport + "\n" +  ("You seem to have some packet loss. This indicates an issue on the line.");
+            intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("You seem to have some packet loss. This indicates an issue on the line.");
         }
 
         //AVERAGE PING REPORT                
@@ -87,13 +87,13 @@ public class GenReport implements Runnable {
         {
             if (testIP.getAvePing() > 80)
             {
-                intelReport = intelReport + "\n" +  ("Looking at your average ping, there is definitely something wrong with your line! Please post the results (at the end of the program) into the forum for advice!");
+                intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Looking at your average ping, there is definitely something wrong with your line! Please post the results (at the end of the program) into the forum for advice!");
             } else if (testIP.getAvePing() > 30)
             {
-                intelReport = intelReport + "\n" +  ("Looking at your average ping, your line seems to be a bit dodgy. This may account for any slow speeds you may be experiencing. However, it could just be related to a high-latency home network (eg... Wi-Fi). If you feel the need, please post the results (at the end of the program) into the forum for advice!");
+                intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Looking at your average ping, your line seems to be a bit dodgy. This may account for any slow speeds you may be experiencing. However, it could just be related to a high-latency home network (eg... Wi-Fi). If you feel the need, please post the results (at the end of the program) into the forum for advice!");
             } else
             {
-                intelReport = intelReport + "\n" +  ("Looking at your average ping, your line seems to be running perfectly.");
+                intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Looking at your average ping, your line seems to be running perfectly.");
             }
         }
 
@@ -104,13 +104,13 @@ public class GenReport implements Runnable {
             {
                 if (testIP.getMaxPing() > 100)
                 {
-                    intelReport = intelReport + "\n" +  ("Looking at your maximum ping, however, it seems as though there could be a serious intermittent fault on the line. This could be a cause of an issue. Please post the results (at the end of the program) into the forum for advice.");
+                    intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Looking at your maximum ping, however, it seems as though there could be a serious intermittent fault on the line. This could be a cause of an issue. Please post the results (at the end of the program) into the forum for advice.");
                 } else if (testIP.getMaxPing() > 30)
                 {
-                    intelReport = intelReport + "\n" +  ("Looking at your maximum ping, however, it seems as though there could be a slight intermittant issue on the line. If required, please post the results to a forum post.");
+                    intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("Looking at your maximum ping, however, it seems as though there could be a slight intermittant issue on the line. If required, please post the results to a forum post.");
                 } else
                 {
-                    intelReport = intelReport + "\n" +  ("It seems that your maximum ping is also good. If there are any issues, they most probably lie with your ISP");
+                    intelReport = intelReport +Reporting.Tools.getLineBreak()+  ("It seems that your maximum ping is also good. If there are any issues, they most probably lie with your ISP");
                 }
             }
         }
