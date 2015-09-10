@@ -22,13 +22,17 @@ public class Tools {
                 String traceResults = traceIP ("zertop.com", 2);
                 Pattern packetLossPattern = Pattern.compile("2 .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})");
                 Matcher packetLossMatcher = packetLossPattern.matcher(traceResults);
-                packetLossMatcher.find();
-                IP = packetLossMatcher.group(1);
+                try { //Kick error if unable to match IP
+                    packetLossMatcher.find();
+                    IP = packetLossMatcher.group(1);
+                }
+                catch (Exception e) {
+                    LineTool.GUI.displayError("Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.");
+                }
             }
             else
             {
-                JOptionPane.showMessageDialog (null, "Unfortunately, you are still running on an old exchange. The tool only supports windows for this capability.");
-                System.exit(0);
+                LineTool.GUI.displayError("Unfortunately, you are still running on an old exchange. The tool only supports windows for this capability.");
             }
         }
         else

@@ -8,41 +8,40 @@ import java.util.Date;
 public class GenReport implements Runnable {
 //PERM VARIABLES
         static String pingResults;
+        static String determinedIP;
         static String intelReport = "";
         static MinMaxAve testIP;
 //PERM VARIABLES
         
     public void run ()
     {
-        //Generate ping results
-        genPingResults();
-        try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
+        //Determine IP to ping
+        determinedIP = Tools.determineIP();
         
-        //Generate Report
-        genReport ();
-        try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-        
-        //Finish. Check for total packet loss else move to results screen
-        LineTool.GUI.setimageFinishedCompleted();
-        if (totalPacketLoss()){
-            LineTool.GUI.displayError("The program was unable to ping an IP. "+Reporting.Tools.getLineBreak()+"Please ensure that you are connected to the internet!");}
-        else{
+        if (!determinedIP.equals(""))
+        {
+            //Generate ping results
+            getPingResults();
+            try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
+            
+            //Generate Report
+            genReport ();
+            try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
+
+            //Finish. Check for total packet loss else move to results screen
+            LineTool.GUI.setimageFinishedCompleted();
             LineTool.GUI.labelRunningTests.setText ("Tests Finished");
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
             LineTool.GUI.TestPanel.setVisible (false);
-            LineTool.GUI.CompletedPanel.setVisible (true);}
+            LineTool.GUI.CompletedPanel.setVisible (true);
+        }
     }
     
-    public static void genPingResults () //Generate Ping Results
+    public static void getPingResults () //Generate Ping Results
     {
-        pingResults = Tools.pingIP (Tools.determineIP(),30);
+        pingResults = Tools.pingIP (determinedIP,30);
         LineTool.GUI.setimagePingingTelkomEquipmentCompleted();
     }
-   
-   public static boolean totalPacketLoss() //Check for total packet loss
-   {
-        return testIP.getPacketLoss() == 100;
-   }
 
    public static void genReport () //Generate report files
    {

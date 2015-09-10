@@ -123,7 +123,6 @@ public class GUI extends javax.swing.JFrame {
         ImageLogo1 = new javax.swing.JLabel();
         ImageBack1 = new javax.swing.JLabel();
         ErrorPanel = new javax.swing.JPanel();
-        ImageReturn1 = new javax.swing.JLabel();
         fieldResultsScroll1 = new javax.swing.JScrollPane();
         fieldError = new javax.swing.JTextArea();
         labelError = new javax.swing.JLabel();
@@ -350,17 +349,6 @@ public class GUI extends javax.swing.JFrame {
         ErrorPanel.setPreferredSize(new java.awt.Dimension(650, 450));
         ErrorPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ImageReturn1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        ImageReturn1.setForeground(new java.awt.Color(255, 255, 255));
-        ImageReturn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/return.png"))); // NOI18N
-        ImageReturn1.setText("Go Back");
-        ImageReturn1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ImageReturn1MouseClicked(evt);
-            }
-        });
-        ErrorPanel.add(ImageReturn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         fieldResultsScroll1.setBackground(new java.awt.Color(51, 51, 51));
         fieldResultsScroll1.setBorder(null);
         fieldResultsScroll1.setOpaque(false);
@@ -428,11 +416,6 @@ public class GUI extends javax.swing.JFrame {
         ResultsPanel.setVisible (false);        // TODO add your handling code here:
     }//GEN-LAST:event_ImageReturnMouseClicked
 
-    private void ImageReturn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageReturn1MouseClicked
-        CompletedPanel.setVisible(true);
-        ResultsPanel.setVisible (false);// TODO add your handling code here:
-    }//GEN-LAST:event_ImageReturn1MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -483,7 +466,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel ImageLogo4;
     private javax.swing.JLabel ImageLogo5;
     private javax.swing.JLabel ImageReturn;
-    private javax.swing.JLabel ImageReturn1;
     private javax.swing.JLabel LabelBeginTests;
     private javax.swing.JLabel LabelDisplayResults;
     private javax.swing.JLabel LabelOpenResultsFormatted;
