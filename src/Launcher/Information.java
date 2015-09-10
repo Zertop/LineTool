@@ -4,7 +4,7 @@ package Launcher;
 public class Information {
     
 //Important Information
-    private static final int version = 215;
+    private static final int version = 216;
     private static final String releasesURL = "http://releases.zertop.com/linetool/";
 //Important Information    
     
