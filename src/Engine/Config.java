@@ -1,12 +1,10 @@
 //Zertop™
 //www.zertop.com
-package Launcher;
-public class Information {
+package Engine;
+public class Config {
     
-//Important Information
     private static final int version = 216;
     private static final String releasesURL = "http://releases.zertop.com/linetool/";
-//Important Information    
     
     public static int getVersion ()
     {

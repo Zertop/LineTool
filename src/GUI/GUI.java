@@ -66,9 +66,9 @@ public class GUI extends javax.swing.JFrame {
 //GETS AND SETS   
     
     public GUI() {
-        System.out.println("Zertop's LineTool Log: V"+Launcher.Information.getVersion());
+        System.out.println("Zertop's LineTool Log: V"+Engine.Config.getVersion());
         initComponents();
-        versionLable.setText("Version: "+Launcher.Information.getVersion());
+        versionLable.setText("Version: "+Engine.Config.getVersion());
         MainPanel.setVisible (true);
         TestPanel.setVisible(false);
         CompletedPanel.setVisible(false);

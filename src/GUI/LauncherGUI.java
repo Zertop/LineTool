@@ -1,11 +1,14 @@
 //Zertop™
 //www.zertop.com
-package Launcher;
+package GUI;
+
+import Engine.Config;
+
 public class LauncherGUI extends javax.swing.JFrame {  
     
     public LauncherGUI() {
         initComponents();
-        versionLable.setText("Version: "+Information.getVersion());
+        versionLable.setText("Version: "+Config.getVersion());
         LauncherPanel.setVisible (true);
     }
     
