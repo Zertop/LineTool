@@ -1,6 +1,6 @@
 //Zertop™
 //www.zertop.com
-package LineTool;
+package GUI;
 public class GUICron implements Runnable {
     static boolean running = true;
     public void run ()

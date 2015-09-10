@@ -99,7 +99,7 @@
         <Component class="javax.swing.JLabel" name="ImageLogo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/LineTool/Images/logo.png"/>
+              <Image iconType="3" name="/GUI/Images/logo.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -111,7 +111,7 @@
         <Component class="javax.swing.JLabel" name="ImageBack">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/LineTool/Images/back.jpg"/>
+              <Image iconType="3" name="/GUI/Images/back.jpg"/>
             </Property>
           </Properties>
           <Constraints>

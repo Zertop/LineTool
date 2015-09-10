@@ -27,12 +27,12 @@ public class Tools {
                     IP = packetLossMatcher.group(1);
                 }
                 catch (Exception e) {
-                    LineTool.GUI.displayError("Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.");
+                    GUI.GUI.displayError("Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.");
                 }
             }
             else
             {
-                LineTool.GUI.displayError("Unfortunately, you are still running on an old exchange. The tool only supports windows for this capability.");
+                GUI.GUI.displayError("Unfortunately, you are still running on an old exchange. The tool only supports windows for this capability.");
             }
         }
         else
@@ -41,7 +41,7 @@ public class Tools {
         }
         System.out.println ("Using IP: "+IP);
         try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-        LineTool.GUI.setimageDeterminingIPToPingCompleted();
+        GUI.GUI.setimageDeterminingIPToPingCompleted();
         return IP;
     }
 //DETERMINE CORRECT IP

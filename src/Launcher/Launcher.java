@@ -8,7 +8,7 @@ public class Launcher {
         LauncherGUI launcherGUI = new LauncherGUI();
         launcherGUI.setVisible(true);
         startUpdate();
-        new LineTool.GUI().setVisible (true);
+        new GUI.GUI().setVisible (true);
         launcherGUI.dispose();
 //CREATE LAUNCHER GUI, CHECK FOR UPDATE
     }

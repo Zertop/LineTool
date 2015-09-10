@@ -29,18 +29,18 @@ public class GenReport implements Runnable {
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
 
             //Finish. Check for total packet loss else move to results screen
-            LineTool.GUI.setimageFinishedCompleted();
-            LineTool.GUI.labelRunningTests.setText ("Tests Finished");
+            GUI.GUI.setimageFinishedCompleted();
+            GUI.GUI.labelRunningTests.setText ("Tests Finished");
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-            LineTool.GUI.TestPanel.setVisible (false);
-            LineTool.GUI.CompletedPanel.setVisible (true);
+            GUI.GUI.TestPanel.setVisible (false);
+            GUI.GUI.CompletedPanel.setVisible (true);
         }
     }
     
     public static void getPingResults () //Generate Ping Results
     {
         pingResults = Tools.pingIP (determinedIP,30);
-        LineTool.GUI.setimagePingingTelkomEquipmentCompleted();
+        GUI.GUI.setimagePingingTelkomEquipmentCompleted();
     }
 
    public static void genReport () //Generate report files
@@ -117,7 +117,7 @@ public class GenReport implements Runnable {
         //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI
        writerUnformatted.println (intelReport);
        writerFormatted.println (intelReport);
-       LineTool.GUI.setFieldResults(intelReport);
+       GUI.GUI.setFieldResults(intelReport);
 
         //ATTACHING DETAILED REPORT
         writerUnformatted.println ("");
@@ -133,11 +133,11 @@ public class GenReport implements Runnable {
         //SAVE AS TMP AND PARSE TO MAIN THREAD                
         writerUnformatted.close();
         writerFormatted.close();
-        LineTool.GUI.setTempFilePathUnformatted (tempUnformatted.getAbsolutePath());
-        LineTool.GUI.setTempFilePathFormatted (tempFormatted.getAbsolutePath());
+        GUI.GUI.setTempFilePathUnformatted (tempUnformatted.getAbsolutePath());
+        GUI.GUI.setTempFilePathFormatted (tempFormatted.getAbsolutePath());
 
         //SET COMPLETED IMAGE                
-        LineTool.GUI.setimageGeneratingReportCompleted ();
+        GUI.GUI.setimageGeneratingReportCompleted ();
     } catch (IOException ex) {}
    }
 //GENERATE REPORT

@@ -54,10 +54,10 @@ public class LauncherGUI extends javax.swing.JFrame {
         versionLable.setText("Version: ");
         LauncherPanel.add(versionLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 100, -1));
 
-        ImageLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/logo.png"))); // NOI18N
+        ImageLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/logo.png"))); // NOI18N
         LauncherPanel.add(ImageLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
-        ImageBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/Images/back.jpg"))); // NOI18N
+        ImageBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/back.jpg"))); // NOI18N
         LauncherPanel.add(ImageBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -60, -1, -1));
 
         getContentPane().add(LauncherPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
