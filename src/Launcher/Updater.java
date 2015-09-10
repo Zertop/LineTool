@@ -31,6 +31,7 @@ public class Updater implements Runnable {
 
     private void upgradeProgram ()
     {
+        LauncherGUI.setUpdateText("Downloading Update!");
         try {
             URL link = new URL(Information.getReleasesURL());
             File newVersionFile = File.createTempFile("LineTool", ".jar");

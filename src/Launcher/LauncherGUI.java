@@ -44,8 +44,9 @@ public class LauncherGUI extends javax.swing.JFrame {
 
         updatesText.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         updatesText.setForeground(new java.awt.Color(255, 255, 255));
+        updatesText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         updatesText.setText("Checking for updates");
-        LauncherPanel.add(updatesText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 260, -1));
+        LauncherPanel.add(updatesText, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 210, -1));
 
         versionLable.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         versionLable.setForeground(new java.awt.Color(255, 255, 255));

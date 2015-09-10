@@ -56,7 +56,7 @@ public class Tools {
 
                 if(OSDetection.isWindows()) 
                 {   
-                    tracecmd = "tracert -h "+hops+ host; // For Windows
+                    tracecmd = "tracert -h "+ hops+ host; // For Windows
                     Process trace = Runtime.getRuntime().exec(tracecmd); 
                     trace.waitFor(); 
                     BufferedReader reader=new BufferedReader(new InputStreamReader (trace.getInputStream()));
