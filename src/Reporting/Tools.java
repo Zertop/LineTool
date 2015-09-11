@@ -14,7 +14,7 @@ public class Tools {
     public static String determineIP ()
     {
         String IP = "";
-        MinMaxAve testIP = new MinMaxAve (Tools.pingIP("155.239.255.250", 1));
+        MinMaxAve testIP = new MinMaxAve (Tools.pingIP("155.239.255.251", 1));
         if (testIP.getPacketLoss() == 100)
         {
             if (OSDetection.isWindows())
@@ -27,7 +27,7 @@ public class Tools {
                     IP = packetLossMatcher.group(1);
                 }
                 catch (Exception e) {
-                    GUI.GUI.displayError("Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.");
+                    GUI.GUI.displayError("Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.\n\nDetailed:\n"+e+traceResults);
                 }
             }
             else
@@ -56,7 +56,7 @@ public class Tools {
 
                 if(OSDetection.isWindows()) 
                 {   
-                    tracecmd = "tracert -h "+ hops+ host; // For Windows
+                    tracecmd = "tracert -h "+ hops + " " + host; // For Windows
                     Process trace = Runtime.getRuntime().exec(tracecmd); 
                     trace.waitFor(); 
                     BufferedReader reader=new BufferedReader(new InputStreamReader (trace.getInputStream()));
