@@ -3,7 +3,7 @@
 package Engine;
 public class Config {
     
-    private static final int version = 217;
+    private static final int version = 218;
     private static final String releasesURL = "http://releases.zertop.com/linetool/";
     
     public static int getVersion ()

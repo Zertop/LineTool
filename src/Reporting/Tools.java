@@ -14,7 +14,7 @@ public class Tools {
     public static String determineIP ()
     {
         String IP = "";
-        MinMaxAve testIP = new MinMaxAve (Tools.pingIP("155.239.255.251", 1));
+        MinMaxAve testIP = new MinMaxAve (Tools.pingIP("155.239.255.250", 1));
         if (testIP.getPacketLoss() == 100)
         {
             if (OSDetection.isWindows())
