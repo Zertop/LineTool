@@ -4,4 +4,4 @@ I have created this software to aid in the process of diagnosing line faults in 
 
 Please visit the MyBroadband page for more info. http://bit.ly/1lqvJpd
 
-Z™
+Z

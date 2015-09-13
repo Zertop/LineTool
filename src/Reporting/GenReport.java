@@ -2,6 +2,8 @@
 //www.zertop.com
 package Reporting;
 
+import Control.Engine;
+
 import java.io.*;
 import java.util.Date;
 
@@ -17,30 +19,33 @@ public class GenReport implements Runnable {
     {
         //Determine IP to ping
         determinedIP = Tools.determineIP();
+        GUI.Interface.setDeterminingIPToPingComplete();
         
         if (!determinedIP.equals(""))
         {
             //Generate ping results
             getPingResults();
+            GUI.Interface.setPingingTelkomEquipmentComplete();
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
+
             
             //Generate Report
             genReport ();
+            GUI.Interface.setGeneratingReportComplete();
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
 
-            //Finish. Check for total packet loss else move to results screen
-            GUI.GUI.setimageFinishedCompleted();
-            GUI.GUI.labelRunningTests.setText ("Tests Finished");
+            //Finish Up
+            GUI.Interface.setFinishedComplete();
             try {Thread.sleep(1000);} catch (InterruptedException ex) {} //Sleep Execution for 1s
-            GUI.GUI.TestPanel.setVisible (false);
-            GUI.GUI.CompletedPanel.setVisible (true);
+
+            //Report Back to Engine
+            Control.Engine.goToResults();
         }
     }
     
     public static void getPingResults () //Generate Ping Results
     {
-        pingResults = Tools.pingIP (determinedIP,30);
-        GUI.GUI.setimagePingingTelkomEquipmentCompleted();
+        pingResults = Tools.pingIP (determinedIP,3);
     }
 
    public static void genReport () //Generate report files
@@ -48,8 +53,8 @@ public class GenReport implements Runnable {
        
     try {
         //INITIALISE WRITERS
-        File tempUnformatted = File.createTempFile("zertoplinetool", ".txt");
-        PrintWriter writerUnformatted = new PrintWriter (tempUnformatted);
+        File tempPlain = File.createTempFile("zertoplinetool", ".txt");
+        PrintWriter writerPlain = new PrintWriter (tempPlain);
 
         File tempFormatted = File.createTempFile("zertoplinetool", ".txt");
         PrintWriter writerFormatted = new PrintWriter (tempFormatted);
@@ -58,9 +63,9 @@ public class GenReport implements Runnable {
         testIP = new MinMaxAve (pingResults);
 
         //GENERATE TEXT FILE HEADERS
-        writerUnformatted.println ("Zertop's \"Is it my Line\" Results" +Reporting.Tools.getLineBreak()+"Date/Time: " + new Date());
-        writerUnformatted.println (""+Reporting.Tools.getLineBreak()+"Basic Report:");
-        writerUnformatted.println ("");
+        writerPlain.println("Zertop's \"Is it my Line\" Results" + Reporting.Tools.getLineBreak() + "Date/Time: " + new Date());
+        writerPlain.println("" + Reporting.Tools.getLineBreak() + "Basic Report:");
+        writerPlain.println("");
 
         writerFormatted.println ("[B]Zertop's \"Is it my Line\" Results" +Reporting.Tools.getLineBreak()+"Date/Time: " + new Date()+"[/B]");
         writerFormatted.println ("[I][B]"+Reporting.Tools.getLineBreak()+"Basic Report:[/B][/I]");
@@ -114,30 +119,27 @@ public class GenReport implements Runnable {
             }
         }
 
-        //ADD INTEL REPORT TO TXT FILE AND SET VARIABLES OF GUI
-       writerUnformatted.println (intelReport);
+       writerPlain.println(intelReport);
        writerFormatted.println (intelReport);
-       GUI.GUI.setFieldResults(intelReport);
 
         //ATTACHING DETAILED REPORT
-        writerUnformatted.println ("");
-        writerUnformatted.println ("Detailed Report:");
-        writerUnformatted.println (pingResults);
+        writerPlain.println("");
+        writerPlain.println("Detailed Report:");
+        writerPlain.println(pingResults);
 
         writerFormatted.println ("");
         writerFormatted.println ("[B][I]Detailed Report:[/B][/I]");
         writerFormatted.println ("[CODE]");
-        writerFormatted.println (pingResults);
-        writerFormatted.println ("[/CODE]");
+        writerFormatted.println(pingResults);
+        writerFormatted.println("[/CODE]");
 
-        //SAVE AS TMP AND PARSE TO MAIN THREAD                
-        writerUnformatted.close();
+        //SAVE AS TMP AND PARSE TO ENGINE
+        writerPlain.close();
         writerFormatted.close();
-        GUI.GUI.setTempFilePathUnformatted (tempUnformatted.getAbsolutePath());
-        GUI.GUI.setTempFilePathFormatted (tempFormatted.getAbsolutePath());
+        Engine.setIntelligentReport(intelReport);
+        Engine.setPlainTxtPath(tempPlain.getAbsolutePath());
+        Engine.setFormattedTxtPath(tempFormatted.getAbsolutePath());
 
-        //SET COMPLETED IMAGE                
-        GUI.GUI.setimageGeneratingReportCompleted ();
     } catch (IOException ex) {}
    }
 //GENERATE REPORT

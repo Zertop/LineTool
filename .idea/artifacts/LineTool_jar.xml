@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="LineTool:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LineTool_jar</output-path>
+    <root id="archive" name="LineTool.jar">
+      <element id="module-output" name="LineTool" />
+    </root>
+  </artifact>
+</component>
