@@ -94,12 +94,7 @@ public class Interface extends JFrame {
     static JLabel imageFinishedFalse = new JLabel();
     static JLabel imageFinishedTrue = new JLabel();
 
-<<<<<<< HEAD
     private void testsPane() {
-=======
-    private void testsPane ()
-    {
->>>>>>> c387b2c3bfeff203652980b8ef04f5eec7fec7ab
 
         runningTestsLabel.setText("Running Tests");
         runningTestsLabel.setFont(new Font("Calibri", 0, 20));
