@@ -11,17 +11,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
-public class Interface extends JFrame{
+public class Interface extends JFrame {
     public static JLayeredPane launcherPane = Templates.getPaneTemplate();
     public static JLayeredPane startPane = Templates.getPaneTemplate();
     public static JLayeredPane testsPane = Templates.getPaneTemplate();
     public static JLayeredPane resultsPane = Templates.getPaneTemplate();
     public static JLayeredPane displayPane = Templates.getPaneTemplate();
 
-    private static JLabel launchStatusLabel = new JLabel ();
+    private static JLabel launchStatusLabel = new JLabel();
 
-    public Interface()
-    {
+    public Interface() {
         initJFrame(); //Init main components
 
         launcherPane(); //Generate Engine Pane
@@ -31,45 +30,35 @@ public class Interface extends JFrame{
         displayPane(); //Generate Display Pane
     }
 
-    public void switchToPane(JLayeredPane panel)
-    {
+    public void switchToPane(JLayeredPane panel) {
         this.getContentPane().removeAll(); //Removes all JPanels currently open
         this.add(panel); //Adds the required JPanel
         panel.setVisible(true); //Sets the panel Visible
         pack(); //Pack to make it nice and neat
         this.setLocationRelativeTo(null); //Generate Centre
-
-//        launcherPane.setVisible(false);
-//        startPane.setVisible(false);
-//        testsPane.setVisible(false);
-//        resultsPane.setVisible(false);
-//        displayPane.setVisible(false);
     }
 
-    private void initJFrame ()
-    {
+    private void initJFrame() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
     }
 
     //<editor-fold desc="Launcher Pane">
-    private void launcherPane()
-    {
+    private void launcherPane() {
         launchStatusLabel.setBounds(0, 300, 650, 30);
         launchStatusLabel.setHorizontalAlignment(SwingConstants.CENTER);
         launchStatusLabel.setFont(new Font("Calibri", 0, 14));
         launchStatusLabel.setForeground(Color.WHITE);
         launcherPane.add(launchStatusLabel);
     }
-        public void setLaunchStatus (String status)
-        {
-            launchStatusLabel.setText(status);
-        }
+
+    public void setLaunchStatus(String status) {
+        launchStatusLabel.setText(status);
+    }
     //</editor-fold>
 
     //<editor-fold desc="Start Pane">
-    private void startPane ()
-    {
+    private void startPane() {
         JLabel startButton = new JLabel(); //Start Button
         startButton.setIcon(new ImageIcon(getClass().getResource("/GUI/Images/start.png")));
         startButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,9 +92,8 @@ public class Interface extends JFrame{
     static JLabel imageGeneratingReportTrue = new JLabel();
     static JLabel imageFinishedFalse = new JLabel();
     static JLabel imageFinishedTrue = new JLabel();
-    
-    private void testsPane ()
-    {
+
+    private void testsPane() {
 
         runningTestsLabel.setText("Running Tests");
         runningTestsLabel.setFont(new Font("Calibri", 0, 20));
@@ -122,15 +110,15 @@ public class Interface extends JFrame{
         labelDeterminingIPToPing.setBounds(150, 290, 210, 20);
         testsPane.add(labelDeterminingIPToPing);
 
-            imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
-            imageDeterminingIPToPingFalse.setBounds(380, 290, 20, 20);
-            testsPane.add(imageDeterminingIPToPingFalse);
-            imageDeterminingIPToPingFalse.setVisible(true);
+        imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageDeterminingIPToPingFalse.setBounds(380, 290, 20, 20);
+        testsPane.add(imageDeterminingIPToPingFalse);
+        imageDeterminingIPToPingFalse.setVisible(true);
 
-            imageDeterminingIPToPingTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
-            imageDeterminingIPToPingTrue.setBounds(380, 290, 20, 20);
-            testsPane.add(imageDeterminingIPToPingTrue);
-            imageDeterminingIPToPingTrue.setVisible(false);
+        imageDeterminingIPToPingTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageDeterminingIPToPingTrue.setBounds(380, 290, 20, 20);
+        testsPane.add(imageDeterminingIPToPingTrue);
+        imageDeterminingIPToPingTrue.setVisible(false);
 
         JLabel labelPingingTelkomEquipment = new JLabel(); //Step 2: Pinging Telkom Equipment
         labelPingingTelkomEquipment.setFont(new java.awt.Font("Calibri", 0, 14));
@@ -140,15 +128,15 @@ public class Interface extends JFrame{
         labelPingingTelkomEquipment.setBounds(150, 320, 210, 20);
         testsPane.add(labelPingingTelkomEquipment);
 
-            imagePingingTelkomEquipmentFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
-            imagePingingTelkomEquipmentFalse.setBounds(380, 320, 20, 20);
-            testsPane.add(imagePingingTelkomEquipmentFalse);
-            imagePingingTelkomEquipmentFalse.setVisible(true);
+        imagePingingTelkomEquipmentFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imagePingingTelkomEquipmentFalse.setBounds(380, 320, 20, 20);
+        testsPane.add(imagePingingTelkomEquipmentFalse);
+        imagePingingTelkomEquipmentFalse.setVisible(true);
 
-            imagePingingTelkomEquipmentTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
-            imagePingingTelkomEquipmentTrue.setBounds(380, 320, 20, 20);
-            testsPane.add(imagePingingTelkomEquipmentTrue);
-            imagePingingTelkomEquipmentTrue.setVisible(false);
+        imagePingingTelkomEquipmentTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imagePingingTelkomEquipmentTrue.setBounds(380, 320, 20, 20);
+        testsPane.add(imagePingingTelkomEquipmentTrue);
+        imagePingingTelkomEquipmentTrue.setVisible(false);
 
         JLabel labelGeneratingReport = new JLabel(); //Step 3: Generating Report
         labelGeneratingReport.setFont(new java.awt.Font("Calibri", 0, 14));
@@ -158,15 +146,15 @@ public class Interface extends JFrame{
         labelGeneratingReport.setBounds(150, 350, 210, 20);
         testsPane.add(labelGeneratingReport);
 
-            imageGeneratingReportFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
-            imageGeneratingReportFalse.setBounds(380, 350, 20, 20);
-            testsPane.add(imageGeneratingReportFalse);
-            imageGeneratingReportFalse.setVisible(true);
+        imageGeneratingReportFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageGeneratingReportFalse.setBounds(380, 350, 20, 20);
+        testsPane.add(imageGeneratingReportFalse);
+        imageGeneratingReportFalse.setVisible(true);
 
-            imageGeneratingReportTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
-            imageGeneratingReportTrue.setBounds(380, 350, 20, 20);
-            testsPane.add(imageGeneratingReportTrue);
-            imageGeneratingReportTrue.setVisible(false);
+        imageGeneratingReportTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageGeneratingReportTrue.setBounds(380, 350, 20, 20);
+        testsPane.add(imageGeneratingReportTrue);
+        imageGeneratingReportTrue.setVisible(false);
 
         JLabel labelFinished = new JLabel(); //Step 4: Finished
         labelFinished.setFont(new java.awt.Font("Calibri", 0, 14));
@@ -176,49 +164,44 @@ public class Interface extends JFrame{
         labelFinished.setBounds(150, 380, 210, 20);
         testsPane.add(labelFinished);
 
-            imageFinishedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
-            imageFinishedFalse.setBounds(380, 380, 20, 20);
-            testsPane.add(imageFinishedFalse);
-            imageFinishedFalse.setVisible(true);
+        imageFinishedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageFinishedFalse.setBounds(380, 380, 20, 20);
+        testsPane.add(imageFinishedFalse);
+        imageFinishedFalse.setVisible(true);
 
-            imageFinishedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
-            imageFinishedTrue.setBounds(380, 380, 20, 20);
-            testsPane.add(imageFinishedTrue);
-            imageFinishedTrue.setVisible(false);
+        imageFinishedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageFinishedTrue.setBounds(380, 380, 20, 20);
+        testsPane.add(imageFinishedTrue);
+        imageFinishedTrue.setVisible(false);
     }
-        public static void setRunningTestsLabel (String text)
-        {
-            runningTestsLabel.setText(text);
-        }
 
-        public static void setDeterminingIPToPingComplete ()
-        {
-            imageDeterminingIPToPingFalse.setVisible(false);
-            imageDeterminingIPToPingTrue.setVisible(true);
-        }
+    public static void setRunningTestsLabel(String text) {
+        runningTestsLabel.setText(text);
+    }
 
-        public static void setPingingTelkomEquipmentComplete ()
-        {
-            imagePingingTelkomEquipmentFalse.setVisible(false);
-            imagePingingTelkomEquipmentTrue.setVisible(true);
-        }
+    public static void setDeterminingIPToPingComplete() {
+        imageDeterminingIPToPingFalse.setVisible(false);
+        imageDeterminingIPToPingTrue.setVisible(true);
+    }
 
-        public static void setGeneratingReportComplete ()
-        {
-            imageGeneratingReportFalse.setVisible(false);
-            imageGeneratingReportTrue.setVisible(true);
-        }
+    public static void setPingingTelkomEquipmentComplete() {
+        imagePingingTelkomEquipmentFalse.setVisible(false);
+        imagePingingTelkomEquipmentTrue.setVisible(true);
+    }
 
-        public static void setFinishedComplete ()
-        {
-            imageFinishedFalse.setVisible(false);
-            imageFinishedTrue.setVisible(true);
-        }
+    public static void setGeneratingReportComplete() {
+        imageGeneratingReportFalse.setVisible(false);
+        imageGeneratingReportTrue.setVisible(true);
+    }
+
+    public static void setFinishedComplete() {
+        imageFinishedFalse.setVisible(false);
+        imageFinishedTrue.setVisible(true);
+    }
     //</editor-fold>
 
     //<editor-fold desc="Results Pane">
-    private void resultsPane ()
-    {
+    private void resultsPane() {
         JLabel resultsHeaderLabel = new JLabel();
         resultsHeaderLabel.setText("Results");
         resultsHeaderLabel.setFont(new Font("Calibri", 0, 20));
@@ -238,13 +221,13 @@ public class Interface extends JFrame{
             }
         });
 
-            JLabel labelDisplayResultsOnScreen = new JLabel(); //Display Results on Screen
-            labelDisplayResultsOnScreen.setFont(new java.awt.Font("Calibri", 0, 14));
-            labelDisplayResultsOnScreen.setForeground(Color.WHITE);
-            labelDisplayResultsOnScreen.setHorizontalAlignment(SwingConstants.LEADING);
-            labelDisplayResultsOnScreen.setText("Display Results on Screen");
-            labelDisplayResultsOnScreen.setBounds(260, 254, 340, 20);
-            resultsPane.add(labelDisplayResultsOnScreen);
+        JLabel labelDisplayResultsOnScreen = new JLabel(); //Display Results on Screen
+        labelDisplayResultsOnScreen.setFont(new java.awt.Font("Calibri", 0, 14));
+        labelDisplayResultsOnScreen.setForeground(Color.WHITE);
+        labelDisplayResultsOnScreen.setHorizontalAlignment(SwingConstants.LEADING);
+        labelDisplayResultsOnScreen.setText("Display Results on Screen");
+        labelDisplayResultsOnScreen.setBounds(260, 254, 340, 20);
+        resultsPane.add(labelDisplayResultsOnScreen);
 
         JLabel imageOpenResultsInTextFilePlain = new JLabel();
         imageOpenResultsInTextFilePlain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/clipextra.png")));
@@ -255,17 +238,18 @@ public class Interface extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 try {
                     Desktop.getDesktop().open(new File(Engine.getPlainTxtPath()));
-                } catch (Exception ex) {}
+                } catch (Exception ex) {
+                }
             }
         });
 
-            JLabel labelOpenResultsInTextFilePlain = new JLabel(); //Open Results in Plain Text File
-            labelOpenResultsInTextFilePlain.setFont(new java.awt.Font("Calibri", 0, 14));
-            labelOpenResultsInTextFilePlain.setForeground(Color.WHITE);
-            labelOpenResultsInTextFilePlain.setHorizontalAlignment(SwingConstants.LEADING);
-            labelOpenResultsInTextFilePlain.setText("Open Results in Text File (Plain)");
-            labelOpenResultsInTextFilePlain.setBounds(260, 314, 340, 20);
-            resultsPane.add(labelOpenResultsInTextFilePlain);
+        JLabel labelOpenResultsInTextFilePlain = new JLabel(); //Open Results in Plain Text File
+        labelOpenResultsInTextFilePlain.setFont(new java.awt.Font("Calibri", 0, 14));
+        labelOpenResultsInTextFilePlain.setForeground(Color.WHITE);
+        labelOpenResultsInTextFilePlain.setHorizontalAlignment(SwingConstants.LEADING);
+        labelOpenResultsInTextFilePlain.setText("Open Results in Text File (Plain)");
+        labelOpenResultsInTextFilePlain.setBounds(260, 314, 340, 20);
+        resultsPane.add(labelOpenResultsInTextFilePlain);
 
         JLabel imageOpenResultsInTextFileFormatted = new JLabel();
         imageOpenResultsInTextFileFormatted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/clip.png")));
@@ -282,21 +266,21 @@ public class Interface extends JFrame{
             }
         });
 
-            JLabel labelOpenResultsInTextFileFormatted = new JLabel(); //Open Results in Formatted Text File
-            labelOpenResultsInTextFileFormatted.setFont(new java.awt.Font("Calibri", 0, 14));
-            labelOpenResultsInTextFileFormatted.setForeground(Color.WHITE);
-            labelOpenResultsInTextFileFormatted.setHorizontalAlignment(SwingConstants.LEADING);
-            labelOpenResultsInTextFileFormatted.setText("Open Results in Text File (Formatted for Forum)");
-            labelOpenResultsInTextFileFormatted.setBounds(260, 374, 340, 20);
-            resultsPane.add(labelOpenResultsInTextFileFormatted);
+        JLabel labelOpenResultsInTextFileFormatted = new JLabel(); //Open Results in Formatted Text File
+        labelOpenResultsInTextFileFormatted.setFont(new java.awt.Font("Calibri", 0, 14));
+        labelOpenResultsInTextFileFormatted.setForeground(Color.WHITE);
+        labelOpenResultsInTextFileFormatted.setHorizontalAlignment(SwingConstants.LEADING);
+        labelOpenResultsInTextFileFormatted.setText("Open Results in Text File (Formatted for Forum)");
+        labelOpenResultsInTextFileFormatted.setBounds(260, 374, 340, 20);
+        resultsPane.add(labelOpenResultsInTextFileFormatted);
     }
     //</editor-fold>
 
     //<editor-fold desc="Display Pane">
     private static JLabel displayHeaderLabel = new JLabel();
     private static JTextArea displayTextArea = new JTextArea();
-    private void displayPane ()
-    {
+
+    private void displayPane() {
         displayHeaderLabel.setText("Display");
         displayHeaderLabel.setFont(new Font("Calibri", 0, 20));
         displayHeaderLabel.setForeground(Color.WHITE);
@@ -308,14 +292,15 @@ public class Interface extends JFrame{
         imageGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/return.png")));
         imageGoBack.setText("Go Back");
         imageGoBack.setForeground(Color.WHITE);
-        imageGoBack.setBounds(10,10,100,32);
+        imageGoBack.setBounds(10, 10, 100, 32);
         displayPane.add(imageGoBack);
         imageGoBack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
                     Engine.goToResults();
-                } catch (Exception ex) {}
+                } catch (Exception ex) {
+                }
             }
         });
 
@@ -337,14 +322,14 @@ public class Interface extends JFrame{
         });
 
     }
-        public static void setDisplayHeaderLabel (String labelText)
-        {
-            displayHeaderLabel.setText(labelText);
-        }
-        public static void setDisplayTextArea (String areaText)
-        {
-            displayTextArea.setText(areaText);
-        }
+
+    public static void setDisplayHeaderLabel(String labelText) {
+        displayHeaderLabel.setText(labelText);
+    }
+
+    public static void setDisplayTextArea(String areaText) {
+        displayTextArea.setText(areaText);
+    }
 
     //</editor-fold>
 }

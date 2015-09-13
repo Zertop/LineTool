@@ -17,7 +17,7 @@ public class Templates {
         JLabel logo = getLogoImage();
 
         JLabel versionLabel = new JLabel(); //Version Label
-        versionLabel.setText("Version: "+ Control.Config.getVersion());
+        versionLabel.setText("Version: " + Control.Config.getVersion());
         versionLabel.setFont(new Font("Tahoma", 0, 10));
         versionLabel.setForeground(Color.WHITE);
         versionLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -35,7 +35,7 @@ public class Templates {
         return pane;
     }
 
-    private static JLabel getBackGroundImage () //Background
+    private static JLabel getBackGroundImage() //Background
     {
         JLabel backgroundImage = new JLabel();
         backgroundImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/GUI/Images/back.jpg")));
@@ -43,7 +43,7 @@ public class Templates {
         return backgroundImage;
     }
 
-    private static JLabel getLogoImage () //Logo
+    private static JLabel getLogoImage() //Logo
     {
         JLabel logoImage = new JLabel();
         logoImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/GUI/Images/logo.png")));
