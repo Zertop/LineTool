@@ -3,6 +3,7 @@
 package Control;
 
 import GUI.Dynamic;
+import GUI.Interface;
 
 public class Engine {
 
@@ -38,7 +39,8 @@ public class Engine {
 
     public static void goToResults() {
         Dynamic.setRunning(false);
-        GUI.switchToPane(GUI.resultsPane);
+        GUI.switchToPane(Interface.resultsPane);
+        GUI.repaint();
     }
 
     public static void displayMessage(String header, String message) {
