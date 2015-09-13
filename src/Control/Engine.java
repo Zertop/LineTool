@@ -40,7 +40,6 @@ public class Engine {
     public static void goToResults() {
         Dynamic.setRunning(false);
         GUI.switchToPane(Interface.resultsPane);
-        GUI.repaint();
     }
 
     public static void displayMessage(String header, String message) {
