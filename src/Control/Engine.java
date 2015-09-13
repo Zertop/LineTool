@@ -22,7 +22,6 @@ public class Engine {
         checkForUpdate();
 
         GUI.switchToPane(GUI.startPane); //Open Start Pane
-        //displayMessage("BLEH","BLEH");
     }
 
 

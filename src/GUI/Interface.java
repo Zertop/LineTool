@@ -32,10 +32,11 @@ public class Interface extends JFrame {
 
     public void switchToPane(JLayeredPane panel) {
         this.getContentPane().removeAll(); //Removes all JPanels currently open
-        this.add(panel); //Adds the required JPanel
+        this.getContentPane().add(panel); //Adds the required JPanel
         panel.setVisible(true); //Sets the panel Visible
         pack(); //Pack to make it nice and neat
         this.setLocationRelativeTo(null); //Generate Centre
+        this.repaint();
     }
 
     private void initJFrame() {
