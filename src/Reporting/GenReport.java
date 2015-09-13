@@ -52,7 +52,7 @@ public class GenReport implements Runnable {
 
     public static void getPingResults() //Generate Ping Results
     {
-        pingResults = Tools.pingIP(determinedIP, 3);
+        pingResults = Tools.pingIP(determinedIP, 30);
     }
 
     public static void genReport() //Generate report files
