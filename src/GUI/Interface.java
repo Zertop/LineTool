@@ -103,7 +103,7 @@ public class Interface extends JFrame{
     static JLabel imageGeneratingReportTrue = new JLabel();
     static JLabel imageFinishedFalse = new JLabel();
     static JLabel imageFinishedTrue = new JLabel();
-    
+
     private void testsPane ()
     {
 
