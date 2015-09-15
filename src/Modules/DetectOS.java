@@ -1,9 +1,6 @@
-//Zertop™
-//www.zertop.com
-package Reporting;
+package Modules;
 
-public class OSDetection {
-
+public class DetectOS {
     private static String OS = System.getProperty("os.name").toLowerCase();
 
     public static boolean isWindows() {

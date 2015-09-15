@@ -4,12 +4,13 @@ package Control;
 
 import GUI.Dynamic;
 import GUI.Interface;
+import Modules.GenReport;
 
 public class Engine {
 
     private static GUI.Interface GUI = new GUI.Interface();
     private static GUI.Dynamic GUIDynamicInstance = new GUI.Dynamic(); //Dynamic Interface Thread
-    private static Reporting.GenReport GenReportInstance = new Reporting.GenReport(); //Generate Report Thread
+    private static GenReport GenReportInstance = new GenReport(); //Generate Report Thread
     private static String plainTxtPath = "";
     private static String formattedTxtPath = "";
     private static String intelligentReport = "";
@@ -27,13 +28,15 @@ public class Engine {
 
 
     public static void beginTests() {
-        GUI.switchToPane(GUI.testsPane); //Switch to the testing pane
+        //Switch to the testing pane
+        GUI.switchToPane(GUI.testsPane);
 
-        Thread GenReportThread = new Thread(GenReportInstance); //Start Generating Report
+        //Start Generating Report
+        Thread GenReportThread = new Thread(GenReportInstance);
         GenReportThread.start();
 
-
-        Thread GUIDynamicThread = new Thread(GUIDynamicInstance); //Start Dynamic GUI Thread
+        //Start Dynamic GUI Thread
+        Thread GUIDynamicThread = new Thread(GUIDynamicInstance);
         GUIDynamicThread.start();
     }
 
