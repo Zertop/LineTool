@@ -34,7 +34,7 @@ public class IPAnalyse {
     //GENERATE MINMAXAVE
     public IPAnalyse(String pingResults) {
         //WINDOWS
-        if (DetectOS.isWindows()) {
+        if (OSVariables.isWindows()) {
             Pattern packetLossPattern = Pattern.compile("Lost.*\\((\\d*)");
             Matcher packetLossMatcher = packetLossPattern.matcher(pingResults);
             if (packetLossMatcher.find()) {
@@ -62,7 +62,7 @@ public class IPAnalyse {
 //WINDOWS
 
 //LINUX
-        if (DetectOS.isUnix()) {
+        if (OSVariables.isUnix()) {
             Pattern pattern = Pattern.compile("rtt\\ min\\/avg\\/max\\/mdev\\ \\=\\ (\\d*).\\d*\\/(\\d*).\\d*\\/(\\d*).\\d*");
             Matcher Matcher = pattern.matcher(pingResults);
             if (Matcher.find()) {
@@ -82,7 +82,7 @@ public class IPAnalyse {
 //LINUX  
 
 //OSX
-        if (DetectOS.isMac()) {
+        if (OSVariables.isMac()) {
             Pattern pattern = Pattern.compile("round-trip\\ min\\/avg\\/max\\/stddev\\ \\=\\ (\\d*).\\d*\\/(\\d*).\\d*\\/(\\d*).\\d*");
             Matcher Matcher = pattern.matcher(pingResults);
             if (Matcher.find()) {

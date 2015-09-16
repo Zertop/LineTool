@@ -7,7 +7,7 @@ import Control.Config;
 import java.io.*;
 import java.net.URL;
 
-public class Downloader {
+public class DownloadFile {
     public static String getTextFile(String file) //Returns a text file as a string
     {
         try {

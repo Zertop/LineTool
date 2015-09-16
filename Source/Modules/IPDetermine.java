@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DetermineIP {
+public class IPDetermine {
     public static String run() {
         String IP = "";
-        IPAnalyse testIP = new IPAnalyse(Modules.PingIP.run("155.239.255.250", 1));
+        IPAnalyse testIP = new IPAnalyse(IPPing.run("155.239.255.250", 1));
         if (testIP.getPacketLoss() == 100) {
-            if (DetectOS.isWindows()) {
-                String traceResults = TraceIP.run("zertop.com", 2);
+            if (OSVariables.isWindows()) {
+                String traceResults = IPTrace.run("zertop.com", 2);
                 Pattern packetLossPattern = Pattern.compile("2 .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})");
                 Matcher packetLossMatcher = packetLossPattern.matcher(traceResults);
                 try { //Kick error if unable to match IP
-                    packetLossMatcher.find();
+                    //packetLossMatcher.find();
                     IP = packetLossMatcher.group(1);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.\n\nDetailed:\n" + e + traceResults);
@@ -29,8 +29,8 @@ public class DetermineIP {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-        } //Sleep Execution for 1s
-        //GUI.GUI.setimageDeterminingIPToPingCompleted();
+            System.out.println(ex.getStackTrace());
+        }
         return IP;
     }
 }
