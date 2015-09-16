@@ -26,7 +26,7 @@ public class DownloadSpeed {
             end = System.nanoTime(); //End Timer
 
             double fileSizeKb = Control.Config.getSpeedTestFileSizeMB() * 1000 * 5;
-            double downloadTime = ((end - start) / 1000000000);
+            double downloadTime = ((end - start) / 1000000000.0);
 
             return (int) Math.round(fileSizeKb / downloadTime);
         } catch (Exception e) {
