@@ -1,6 +1,6 @@
 //Zertop™
 //www.zertop.com
-package Modules;
+package Control;
 
 import Control.Config;
 
@@ -14,7 +14,6 @@ public class DownloadFile {
             URL website = new URL(Config.getReleasesURL() + file);
             InputStream websiteStream = website.openStream();
             BufferedReader websiteDataStream = new BufferedReader(new InputStreamReader(websiteStream));
-            //return websiteDataStream.readLine();
             return websiteDataStream.readLine();
         } catch (Exception ex) {
             System.out.println("An error occurred whilst trying to download a file!\n" + ex);

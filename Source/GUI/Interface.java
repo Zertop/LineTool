@@ -87,6 +87,8 @@ public class Interface extends JFrame {
     static JLabel runningTestsLabel = new JLabel();
     static JLabel imageDeterminingIPToPingFalse = new JLabel();
     static JLabel imageDeterminingIPToPingTrue = new JLabel();
+    static JLabel imageTestingDownloadSpeedTrue = new JLabel();
+    static JLabel imageTestingDownloadSpeedFalse = new JLabel();
     static JLabel imagePingingTelkomEquipmentFalse = new JLabel();
     static JLabel imagePingingTelkomEquipmentTrue = new JLabel();
     static JLabel imageGeneratingReportFalse = new JLabel();
@@ -100,28 +102,49 @@ public class Interface extends JFrame {
         runningTestsLabel.setFont(new Font("Calibri", 0, 20));
         runningTestsLabel.setForeground(Color.WHITE);
         runningTestsLabel.setHorizontalAlignment(SwingConstants.LEADING);
-        runningTestsLabel.setBounds(260, 230, 150, 20);
+        runningTestsLabel.setBounds(260, 210, 150, 20);
         testsPane.add(runningTestsLabel);
 
-        JLabel labelDeterminingIPToPing = new JLabel(); //Step 1: Determining IP
+        //Step 1: Determining IP
+        JLabel labelDeterminingIPToPing = new JLabel();
         labelDeterminingIPToPing.setFont(new java.awt.Font("Calibri", 0, 14));
         labelDeterminingIPToPing.setForeground(Color.WHITE);
         labelDeterminingIPToPing.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelDeterminingIPToPing.setText("Determining IP Address to Ping:");
-        labelDeterminingIPToPing.setBounds(150, 290, 210, 20);
+        labelDeterminingIPToPing.setBounds(150, 260, 210, 20);
         testsPane.add(labelDeterminingIPToPing);
 
         imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
-        imageDeterminingIPToPingFalse.setBounds(380, 290, 20, 20);
+        imageDeterminingIPToPingFalse.setBounds(380, 260, 20, 20);
         testsPane.add(imageDeterminingIPToPingFalse);
         imageDeterminingIPToPingFalse.setVisible(true);
 
         imageDeterminingIPToPingTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
-        imageDeterminingIPToPingTrue.setBounds(380, 290, 20, 20);
+        imageDeterminingIPToPingTrue.setBounds(380, 260, 20, 20);
         testsPane.add(imageDeterminingIPToPingTrue);
         imageDeterminingIPToPingTrue.setVisible(false);
 
-        JLabel labelPingingTelkomEquipment = new JLabel(); //Step 2: Pinging Telkom Equipment
+        //Step 2: Testing Download Speed
+        JLabel labelTestingDownloadSpeed = new JLabel();
+        labelTestingDownloadSpeed.setFont(new java.awt.Font("Calibri", 0, 14));
+        labelTestingDownloadSpeed.setForeground(Color.WHITE);
+        labelTestingDownloadSpeed.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelTestingDownloadSpeed.setText("Testing Your Download Speed:");
+        labelTestingDownloadSpeed.setBounds(150, 290, 210, 20);
+        testsPane.add(labelTestingDownloadSpeed);
+
+        imageTestingDownloadSpeedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageTestingDownloadSpeedFalse.setBounds(380, 290, 20, 20);
+        testsPane.add(imageTestingDownloadSpeedFalse);
+        imageTestingDownloadSpeedFalse.setVisible(true);
+
+        imageTestingDownloadSpeedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageTestingDownloadSpeedTrue.setBounds(380, 290, 20, 20);
+        testsPane.add(imageTestingDownloadSpeedTrue);
+        imageTestingDownloadSpeedTrue.setVisible(false);
+
+        //Step 3: Pinging Telkom Equipment
+        JLabel labelPingingTelkomEquipment = new JLabel();
         labelPingingTelkomEquipment.setFont(new java.awt.Font("Calibri", 0, 14));
         labelPingingTelkomEquipment.setForeground(Color.WHITE);
         labelPingingTelkomEquipment.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -139,7 +162,8 @@ public class Interface extends JFrame {
         testsPane.add(imagePingingTelkomEquipmentTrue);
         imagePingingTelkomEquipmentTrue.setVisible(false);
 
-        JLabel labelGeneratingReport = new JLabel(); //Step 3: Generating Report
+        //Step 4: Generating Report
+        JLabel labelGeneratingReport = new JLabel();
         labelGeneratingReport.setFont(new java.awt.Font("Calibri", 0, 14));
         labelGeneratingReport.setForeground(Color.WHITE);
         labelGeneratingReport.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -157,7 +181,8 @@ public class Interface extends JFrame {
         testsPane.add(imageGeneratingReportTrue);
         imageGeneratingReportTrue.setVisible(false);
 
-        JLabel labelFinished = new JLabel(); //Step 4: Finished
+        //Step 5: Finished
+        JLabel labelFinished = new JLabel();
         labelFinished.setFont(new java.awt.Font("Calibri", 0, 14));
         labelFinished.setForeground(Color.WHITE);
         labelFinished.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -183,6 +208,11 @@ public class Interface extends JFrame {
     public static void setDeterminingIPToPingComplete() {
         imageDeterminingIPToPingFalse.setVisible(false);
         imageDeterminingIPToPingTrue.setVisible(true);
+    }
+
+    public static void setImageTestingDownloadSpeedComplete() {
+        imageTestingDownloadSpeedFalse.setVisible(false);
+        imageTestingDownloadSpeedTrue.setVisible(true);
     }
 
     public static void setPingingTelkomEquipmentComplete() {

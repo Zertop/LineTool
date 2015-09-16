@@ -2,19 +2,19 @@
 //www.zertop.com
 package Modules;
 
-import Control.Engine;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-public class GenReport implements Runnable {
+public class ReportGenerate implements Runnable {
     //PERM VARIABLES
     static String pingResults;
     static String determinedIP;
     static String intelReport = "";
-    static Modules.IPAnalyse testIP;
+    static int localSpeedTest;
+    static int intSpeedTest;
+    static ReportPingAnalyse testIP;
 //PERM VARIABLES
 
     public void run() {
@@ -23,6 +23,12 @@ public class GenReport implements Runnable {
         GUI.Interface.setDeterminingIPToPingComplete();
 
         if (!determinedIP.equals("")) {
+
+            //Do Speed Test
+            localSpeedTest = Modules.DownloadSpeed.run(Control.Config.getLocalSpeedTestFile());
+            intSpeedTest = Modules.DownloadSpeed.run(Control.Config.getInternationalSpeedTestFile());
+            GUI.Interface.setImageTestingDownloadSpeedComplete();
+
             //Generate ping results
             getPingResults();
             GUI.Interface.setPingingTelkomEquipmentComplete();
@@ -72,7 +78,7 @@ public class GenReport implements Runnable {
             PrintWriter writerFormatted = new PrintWriter(tempFormatted);
 
             //GENERATE MIN MAX AVE VARIABLES
-            testIP = new Modules.IPAnalyse(pingResults);
+            testIP = new ReportPingAnalyse(pingResults);
 
             //GENERATE TEXT FILE HEADERS
             writerPlain.println("Zertop's \"Is it my Line\" Results" + OSVariables.getLineBreak() + "Date/Time: " + new Date());
@@ -87,6 +93,8 @@ public class GenReport implements Runnable {
             intelReport = intelReport + ("Your packet loss was " + testIP.getPacketLoss() + "%.");
             intelReport = intelReport + OSVariables.getLineBreak() + ("Your average ping was " + testIP.getAvePing() + "ms.");
             intelReport = intelReport + OSVariables.getLineBreak() + ("Your maximum ping was " + testIP.getMaxPing() + "ms.");
+            intelReport = intelReport + OSVariables.getLineBreak() + "Your local download speed was " + localSpeedTest + "Kbps";
+            intelReport = intelReport + OSVariables.getLineBreak() + "Your international download speed was " + intSpeedTest + "Kbps";
             intelReport = intelReport + OSVariables.getLineBreak() + ("");
 
             //PACKET LOSS REPORT
@@ -137,9 +145,9 @@ public class GenReport implements Runnable {
             //SAVE AS TMP AND PARSE TO ENGINE
             writerPlain.close();
             writerFormatted.close();
-            Engine.setIntelligentReport(intelReport);
-            Engine.setPlainTxtPath(tempPlain.getAbsolutePath());
-            Engine.setFormattedTxtPath(tempFormatted.getAbsolutePath());
+            Control.Engine.setIntelligentReport(intelReport);
+            Control.Engine.setPlainTxtPath(tempPlain.getAbsolutePath());
+            Control.Engine.setFormattedTxtPath(tempFormatted.getAbsolutePath());
 
         } catch (IOException ex) {
             System.out.println(ex);

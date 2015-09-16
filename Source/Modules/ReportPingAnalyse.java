@@ -5,7 +5,7 @@ package Modules;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IPAnalyse {
+public class ReportPingAnalyse {
     //VARIABLES
     private static int maxPing = 0;
     private static int minPing = 0;
@@ -32,7 +32,7 @@ public class IPAnalyse {
 //GETS
 
     //GENERATE MINMAXAVE
-    public IPAnalyse(String pingResults) {
+    public ReportPingAnalyse(String pingResults) {
         //WINDOWS
         if (OSVariables.isWindows()) {
             Pattern packetLossPattern = Pattern.compile("Lost.*\\((\\d*)");

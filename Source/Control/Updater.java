@@ -2,8 +2,6 @@
 //www.zertop.com
 package Control;
 
-import Modules.DownloadFile;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,3 +1,5 @@
+//Zertop™
+//www.zertop.com
 package Modules;
 
 import javax.swing.*;
@@ -7,7 +9,7 @@ import java.util.regex.Pattern;
 public class IPDetermine {
     public static String run() {
         String IP = "";
-        IPAnalyse testIP = new IPAnalyse(IPPing.run("155.239.255.250", 1));
+        ReportPingAnalyse testIP = new ReportPingAnalyse(IPPing.run("155.239.255.250", 1));
         if (testIP.getPacketLoss() == 100) {
             if (OSVariables.isWindows()) {
                 String traceResults = IPTrace.run("zertop.com", 2);
