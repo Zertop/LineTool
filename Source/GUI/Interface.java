@@ -100,10 +100,11 @@ public class Interface extends JFrame {
         runningTestsLabel.setFont(new Font("Calibri", 0, 20));
         runningTestsLabel.setForeground(Color.WHITE);
         runningTestsLabel.setHorizontalAlignment(SwingConstants.LEADING);
-        runningTestsLabel.setBounds(260, 230, 150, 20);
+        runningTestsLabel.setBounds(260, 240, 150, 20);
         testsPane.add(runningTestsLabel);
 
-        JLabel labelDeterminingIPToPing = new JLabel(); //Step 1: Determining IP
+        //Step 1: Determining IP
+        JLabel labelDeterminingIPToPing = new JLabel();
         labelDeterminingIPToPing.setFont(new java.awt.Font("Calibri", 0, 14));
         labelDeterminingIPToPing.setForeground(Color.WHITE);
         labelDeterminingIPToPing.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -121,7 +122,8 @@ public class Interface extends JFrame {
         testsPane.add(imageDeterminingIPToPingTrue);
         imageDeterminingIPToPingTrue.setVisible(false);
 
-        JLabel labelPingingTelkomEquipment = new JLabel(); //Step 2: Pinging Telkom Equipment
+        //Step 2: Pinging Telkom Equipment
+        JLabel labelPingingTelkomEquipment = new JLabel();
         labelPingingTelkomEquipment.setFont(new java.awt.Font("Calibri", 0, 14));
         labelPingingTelkomEquipment.setForeground(Color.WHITE);
         labelPingingTelkomEquipment.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -139,7 +141,8 @@ public class Interface extends JFrame {
         testsPane.add(imagePingingTelkomEquipmentTrue);
         imagePingingTelkomEquipmentTrue.setVisible(false);
 
-        JLabel labelGeneratingReport = new JLabel(); //Step 3: Generating Report
+        //Step 3: Generating Report
+        JLabel labelGeneratingReport = new JLabel();
         labelGeneratingReport.setFont(new java.awt.Font("Calibri", 0, 14));
         labelGeneratingReport.setForeground(Color.WHITE);
         labelGeneratingReport.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -157,7 +160,8 @@ public class Interface extends JFrame {
         testsPane.add(imageGeneratingReportTrue);
         imageGeneratingReportTrue.setVisible(false);
 
-        JLabel labelFinished = new JLabel(); //Step 4: Finished
+        //Step 4: Finished
+        JLabel labelFinished = new JLabel();
         labelFinished.setFont(new java.awt.Font("Calibri", 0, 14));
         labelFinished.setForeground(Color.WHITE);
         labelFinished.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);

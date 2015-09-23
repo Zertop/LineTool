@@ -1,11 +1,11 @@
 //Zertop™
 //www.zertop.com
-package Reporting;
+package Modules;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MinMaxAve {
+public class ReportPingAnalyse {
     //VARIABLES
     private static int maxPing = 0;
     private static int minPing = 0;
@@ -32,9 +32,9 @@ public class MinMaxAve {
 //GETS
 
     //GENERATE MINMAXAVE
-    MinMaxAve(String pingResults) {
-//WINDOWS
-        if (OSDetection.isWindows()) {
+    public ReportPingAnalyse(String pingResults) {
+        //WINDOWS
+        if (OSVariables.isWindows()) {
             Pattern packetLossPattern = Pattern.compile("Lost.*\\((\\d*)");
             Matcher packetLossMatcher = packetLossPattern.matcher(pingResults);
             if (packetLossMatcher.find()) {
@@ -62,7 +62,7 @@ public class MinMaxAve {
 //WINDOWS
 
 //LINUX
-        if (OSDetection.isUnix()) {
+        if (OSVariables.isUnix()) {
             Pattern pattern = Pattern.compile("rtt\\ min\\/avg\\/max\\/mdev\\ \\=\\ (\\d*).\\d*\\/(\\d*).\\d*\\/(\\d*).\\d*");
             Matcher Matcher = pattern.matcher(pingResults);
             if (Matcher.find()) {
@@ -82,7 +82,7 @@ public class MinMaxAve {
 //LINUX  
 
 //OSX
-        if (OSDetection.isMac()) {
+        if (OSVariables.isMac()) {
             Pattern pattern = Pattern.compile("round-trip\\ min\\/avg\\/max\\/stddev\\ \\=\\ (\\d*).\\d*\\/(\\d*).\\d*\\/(\\d*).\\d*");
             Matcher Matcher = pattern.matcher(pingResults);
             if (Matcher.find()) {
@@ -101,5 +101,4 @@ public class MinMaxAve {
         }
 //OSX       
     }
-//GENERATE MINMAXAVE
 }

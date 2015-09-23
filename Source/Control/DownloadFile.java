@@ -2,22 +2,21 @@
 //www.zertop.com
 package Control;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.InputStream;
+import Control.Config;
+
+import java.io.*;
 import java.net.URL;
 
-public class HTTP {
+public class DownloadFile {
     public static String getTextFile(String file) //Returns a text file as a string
     {
         try {
             URL website = new URL(Config.getReleasesURL() + file);
             InputStream websiteStream = website.openStream();
-            DataInputStream websiteDataStream = new DataInputStream(new BufferedInputStream(websiteStream));
+            BufferedReader websiteDataStream = new BufferedReader(new InputStreamReader(websiteStream));
             return websiteDataStream.readLine();
         } catch (Exception ex) {
-            System.out.println("An error occured whilst trying to download a file!\n" + ex);
+            System.out.println("An error occurred whilst trying to download a file!\n" + ex);
         }
         return null;
     }
