@@ -12,8 +12,6 @@ public class ReportGenerate implements Runnable {
     static String pingResults;
     static String determinedIP;
     static String intelReport = "";
-    static int localSpeedTest;
-    static int intSpeedTest;
     static ReportPingAnalyse testIP;
 //PERM VARIABLES
 
@@ -23,12 +21,6 @@ public class ReportGenerate implements Runnable {
         GUI.Interface.setDeterminingIPToPingComplete();
 
         if (!determinedIP.equals("")) {
-
-            //Do Speed Test
-            localSpeedTest = Modules.DownloadSpeed.run(Control.Config.getLocalSpeedTestFile());
-            intSpeedTest = Modules.DownloadSpeed.run(Control.Config.getInternationalSpeedTestFile());
-            GUI.Interface.setImageTestingDownloadSpeedComplete();
-
             //Generate ping results
             getPingResults();
             GUI.Interface.setPingingTelkomEquipmentComplete();
@@ -93,8 +85,6 @@ public class ReportGenerate implements Runnable {
             intelReport = intelReport + ("Your packet loss was " + testIP.getPacketLoss() + "%.");
             intelReport = intelReport + OSVariables.getLineBreak() + ("Your average ping was " + testIP.getAvePing() + "ms.");
             intelReport = intelReport + OSVariables.getLineBreak() + ("Your maximum ping was " + testIP.getMaxPing() + "ms.");
-            intelReport = intelReport + OSVariables.getLineBreak() + "Your local download speed was " + localSpeedTest + "Kbps";
-            intelReport = intelReport + OSVariables.getLineBreak() + "Your international download speed was " + intSpeedTest + "Kbps";
             intelReport = intelReport + OSVariables.getLineBreak() + ("");
 
             //PACKET LOSS REPORT

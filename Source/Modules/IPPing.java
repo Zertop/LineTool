@@ -7,9 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class IPPing {
-    static String output = "";
-
     public static String run(String host, int num) {
+        String output = "";
         try {
             String pingcmd;
 
