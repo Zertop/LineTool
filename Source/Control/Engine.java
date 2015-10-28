@@ -2,6 +2,7 @@
 //www.zertop.com
 package Control;
 
+import Config.Config;
 import Modules.FileToString;
 import Modules.ReportGenerate;
 
@@ -16,7 +17,7 @@ public class Engine {
     private static String intelligentReport = "";
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Zertop's LineTool V" + Config.getVersion());
+        System.out.println("Welcome to " + Config.getAppName() + " V" + Config.getVersion());
         try {
             GUI = new GUI.Interface();
             interfaceMode();

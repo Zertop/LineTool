@@ -2,6 +2,8 @@
 //www.zertop.com
 package Modules;
 
+import Config.Config;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,21 +49,21 @@ public class ReportGenerate implements Runnable {
 
         try {
             //INITIALISE WRITERS
-            File tempPlain = File.createTempFile("zertoplinetool", ".txt");
+            File tempPlain = File.createTempFile(Config.getAppName(), ".txt");
             PrintWriter writerPlain = new PrintWriter(tempPlain);
 
-            File tempFormatted = File.createTempFile("zertoplinetool", ".txt");
+            File tempFormatted = File.createTempFile(Config.getAppName(), ".txt");
             PrintWriter writerFormatted = new PrintWriter(tempFormatted);
 
             //GENERATE MIN MAX AVE VARIABLES
             testIP = new ReportPingAnalyse(pingResults);
 
             //GENERATE TEXT FILE HEADERS
-            writerPlain.println("Zertop's \"Is it my Line\" Results" + OSVariables.getLineBreak() + "Date/Time: " + new Date());
+            writerPlain.println(Config.getAppName() + " Results" + OSVariables.getLineBreak() + "Date/Time: " + new Date());
             writerPlain.println("" + OSVariables.getLineBreak() + "Basic Report:");
             writerPlain.println("");
 
-            writerFormatted.println("[B]Zertop's \"Is it my Line\" Results" + OSVariables.getLineBreak() + "Date/Time: " + new Date() + "[/B]");
+            writerFormatted.println("[B]" + Config.getAppName() + " Results" + OSVariables.getLineBreak() + "Date/Time: " + new Date() + "[/B]");
             writerFormatted.println("[I][B]" + OSVariables.getLineBreak() + "Basic Report:[/B][/I]");
             writerFormatted.println("");
 
@@ -73,19 +75,19 @@ public class ReportGenerate implements Runnable {
 
             //PACKET LOSS REPORT
             if (testIP.getPacketLoss() > 20) {
-                intelReport = intelReport + OSVariables.getLineBreak() + ("You have serious packet loss. Please post these results to the forum for advice.");
+                intelReport = intelReport + OSVariables.getLineBreak() + (Config.getSeriousPacketLoss());
             } else if (testIP.getPacketLoss() > 1) {
-                intelReport = intelReport + OSVariables.getLineBreak() + ("You seem to have some packet loss. This indicates an issue on the line.");
+                intelReport = intelReport + OSVariables.getLineBreak() + (Config.getSomePacketLoss());
             }
 
             //AVERAGE PING REPORT
             if (testIP.getPacketLoss() < 20) {
                 if (testIP.getAvePing() > 80) {
-                    intelReport = intelReport + OSVariables.getLineBreak() + ("Looking at your average ping, there is definitely something wrong with your line! Please post the results (at the end of the program) into the forum for advice!");
+                    intelReport = intelReport + OSVariables.getLineBreak() + (Config.getBadAveragePing());
                 } else if (testIP.getAvePing() > 30) {
-                    intelReport = intelReport + OSVariables.getLineBreak() + ("Looking at your average ping, your line seems to be a bit dodgy. This may account for any slow speeds you may be experiencing. However, it could just be related to a high-latency home network (eg... Wi-Fi). If you feel the need, please post the results (at the end of the program) into the forum for advice!");
+                    intelReport = intelReport + OSVariables.getLineBreak() + (Config.getMedAveragePing());
                 } else {
-                    intelReport = intelReport + OSVariables.getLineBreak() + ("Looking at your average ping, your line seems to be running perfectly.");
+                    intelReport = intelReport + OSVariables.getLineBreak() + (Config.getGoodAveragePing());
                 }
             }
 
@@ -93,11 +95,11 @@ public class ReportGenerate implements Runnable {
             if (testIP.getPacketLoss() < 20) {
                 if (testIP.getAvePing() < 30) {
                     if (testIP.getMaxPing() > 100) {
-                        intelReport = intelReport + OSVariables.getLineBreak() + ("Looking at your maximum ping, however, it seems as though there could be a serious intermittent fault on the line. This could be a cause of an issue. Please post the results (at the end of the program) into the forum for advice.");
+                        intelReport = intelReport + OSVariables.getLineBreak() + (Config.getBadMaximumPing());
                     } else if (testIP.getMaxPing() > 30) {
-                        intelReport = intelReport + OSVariables.getLineBreak() + ("Looking at your maximum ping, however, it seems as though there could be a slight intermittant issue on the line. If required, please post the results to a forum post.");
+                        intelReport = intelReport + OSVariables.getLineBreak() + (Config.getMedMaximumPing());
                     } else {
-                        intelReport = intelReport + OSVariables.getLineBreak() + ("It seems that your maximum ping is also good. If there are any issues, they most probably lie with your ISP");
+                        intelReport = intelReport + OSVariables.getLineBreak() + (Config.getGoodMaximumPing());
                     }
                 }
             }
