@@ -78,7 +78,7 @@ public class ReportPingAnalyse {
                 avePing = Integer.parseInt(Matcher.group(2));
             }
 
-            Pattern packetLossPattern = Pattern.compile("(\\d*)\\%\\ packet\\ loss");
+            Pattern packetLossPattern = Pattern.compile("(\\d*)\\.\\d*% packet\\ loss");
             Matcher packetLossMatcher = packetLossPattern.matcher(pingResults);
             if (packetLossMatcher.find()) {
                 packetLoss = Integer.parseInt(packetLossMatcher.group(1));

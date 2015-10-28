@@ -16,7 +16,6 @@ public class IPDetermine {
                 Pattern packetLossPattern = Pattern.compile("2 .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})");
                 Matcher packetLossMatcher = packetLossPattern.matcher(traceResults);
                 try { //Kick error if unable to match IP
-                    //packetLossMatcher.find();
                     IP = packetLossMatcher.group(1);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.\n\nDetailed:\n" + e + traceResults);

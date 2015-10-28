@@ -28,7 +28,6 @@ public class IPTrace {
         } catch (IOException | InterruptedException e1) {
             System.out.println(e1);
         }
-
         return output;
     }
 }
