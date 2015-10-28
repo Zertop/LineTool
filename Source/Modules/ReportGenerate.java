@@ -18,47 +18,31 @@ public class ReportGenerate implements Runnable {
     public void run() {
         //Determine IP to ping
         determinedIP = IPDetermine.run();
-        GUI.Interface.setDeterminingIPToPingComplete();
+        Control.Engine.setDeterminingIPToPingComplete();
 
         if (!determinedIP.equals("")) {
-            //Generate ping results
-            getPingResults();
-            GUI.Interface.setPingingTelkomEquipmentComplete();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.out.println(ex);
-            } //Sleep Execution for 1s
+            getPingResults(); //Generate ping results
+            Control.Engine.setPingingTelkomEquipmentComplete();
+            Modules.Sleep.Time(1);
 
-
-            //Generate Report
-            genReport();
-            GUI.Interface.setGeneratingReportComplete();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.out.println(ex);
-            } //Sleep Execution for 1s
+            genReport();//Generate Report
+            Control.Engine.setGeneratingReportComplete();
 
             //Finish Up
-            GUI.Interface.setFinishedComplete();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.out.println(ex);
-            } //Sleep Execution for 1s
+            Control.Engine.setFinishedComplete();
+            Modules.Sleep.Time(1);
 
             //Report Back to Engine
             Control.Engine.goToResults();
         }
     }
 
-    public static void getPingResults() //Generate Ping Results
+    public void getPingResults() //Generate Ping Results
     {
         pingResults = IPPing.run(determinedIP, 30);
     }
 
-    public static void genReport() //Generate report files
+    public void genReport() //Generate report files
     {
 
         try {

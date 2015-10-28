@@ -2,8 +2,6 @@
 //www.zertop.com
 package Control;
 
-import Control.Config;
-
 import java.io.*;
 import java.net.URL;
 

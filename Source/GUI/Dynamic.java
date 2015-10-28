@@ -3,7 +3,7 @@
 package GUI;
 
 public class Dynamic implements Runnable {
-    private static boolean running = true;
+    private boolean running = true;
 
     public void run() {
         while (running) {
@@ -11,25 +11,16 @@ public class Dynamic implements Runnable {
         }
     }
 
-    public static void setRunning(boolean run) {
+    public void setRunning(boolean run) {
         running = run;
     }
 
-    private static void RunningTestsProgressDots() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-        } //Sleep Execution for 1s
-        GUI.Interface.setRunningTestsLabel("Running Tests.");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-        } //Sleep Execution for 1s
-        GUI.Interface.setRunningTestsLabel("Running Tests..");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-        } //Sleep Execution for 1s
-        GUI.Interface.setRunningTestsLabel("Running Tests...");
+    private void RunningTestsProgressDots() {
+        Modules.Sleep.Time(1);
+        Control.Engine.setRunningTestsLabel("Running Tests.");
+        Modules.Sleep.Time(1);
+        Control.Engine.setRunningTestsLabel("Running Tests..");
+        Modules.Sleep.Time(1);
+        Control.Engine.setRunningTestsLabel("Running Tests...");
     }
 }

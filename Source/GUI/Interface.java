@@ -12,13 +12,13 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 
 public class Interface extends JFrame {
-    public static JLayeredPane launcherPane = Templates.getPaneTemplate();
-    public static JLayeredPane startPane = Templates.getPaneTemplate();
-    public static JLayeredPane testsPane = Templates.getPaneTemplate();
-    public static JLayeredPane resultsPane = Templates.getPaneTemplate();
-    public static JLayeredPane displayPane = Templates.getPaneTemplate();
+    public JLayeredPane launcherPane = Templates.getPaneTemplate();
+    public JLayeredPane startPane = Templates.getPaneTemplate();
+    public JLayeredPane testsPane = Templates.getPaneTemplate();
+    public JLayeredPane resultsPane = Templates.getPaneTemplate();
+    public JLayeredPane displayPane = Templates.getPaneTemplate();
 
-    private static JLabel launchStatusLabel = new JLabel();
+    private JLabel launchStatusLabel = new JLabel();
 
     public Interface() {
         initJFrame(); //Init main components
@@ -28,6 +28,18 @@ public class Interface extends JFrame {
         testsPane(); //Generate Tests Pane
         resultsPane(); //Generate Results Pane
         displayPane(); //Generate Display Pane
+
+        startDynamicInterface();
+    }
+
+    public void startDynamicInterface() {
+        Thread GUIDynamicThread = new Thread(new Dynamic());
+        GUIDynamicThread.start();
+    }
+
+    private void initJFrame() {
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
     public void switchToPane(JLayeredPane panel) {
@@ -39,12 +51,6 @@ public class Interface extends JFrame {
         this.repaint();
     }
 
-    private void initJFrame() {
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
-    }
-
-    //<editor-fold desc="Launcher Pane">
     private void launcherPane() {
         launchStatusLabel.setBounds(0, 300, 650, 30);
         launchStatusLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,9 +62,7 @@ public class Interface extends JFrame {
     public void setLaunchStatus(String status) {
         launchStatusLabel.setText(status);
     }
-    //</editor-fold>
 
-    //<editor-fold desc="Start Pane">
     private void startPane() {
         JLabel startButton = new JLabel(); //Start Button
         startButton.setIcon(new ImageIcon(getClass().getResource("/GUI/Images/start.png")));
@@ -81,18 +85,16 @@ public class Interface extends JFrame {
         startPane.add(startLabel);
 
     }
-    //</editor-fold>
 
-    //<editor-fold desc="Tests Pane">
-    static JLabel runningTestsLabel = new JLabel();
-    static JLabel imageDeterminingIPToPingFalse = new JLabel();
-    static JLabel imageDeterminingIPToPingTrue = new JLabel();
-    static JLabel imagePingingTelkomEquipmentFalse = new JLabel();
-    static JLabel imagePingingTelkomEquipmentTrue = new JLabel();
-    static JLabel imageGeneratingReportFalse = new JLabel();
-    static JLabel imageGeneratingReportTrue = new JLabel();
-    static JLabel imageFinishedFalse = new JLabel();
-    static JLabel imageFinishedTrue = new JLabel();
+    JLabel runningTestsLabel = new JLabel();
+    JLabel imageDeterminingIPToPingFalse = new JLabel();
+    JLabel imageDeterminingIPToPingTrue = new JLabel();
+    JLabel imagePingingTelkomEquipmentFalse = new JLabel();
+    JLabel imagePingingTelkomEquipmentTrue = new JLabel();
+    JLabel imageGeneratingReportFalse = new JLabel();
+    JLabel imageGeneratingReportTrue = new JLabel();
+    JLabel imageFinishedFalse = new JLabel();
+    JLabel imageFinishedTrue = new JLabel();
 
     private void testsPane() {
 
@@ -180,32 +182,30 @@ public class Interface extends JFrame {
         imageFinishedTrue.setVisible(false);
     }
 
-    public static void setRunningTestsLabel(String text) {
+    public void setRunningTestsLabel(String text) {
         runningTestsLabel.setText(text);
     }
 
-    public static void setDeterminingIPToPingComplete() {
+    public void setDeterminingIPToPingComplete() {
         imageDeterminingIPToPingFalse.setVisible(false);
         imageDeterminingIPToPingTrue.setVisible(true);
     }
 
-    public static void setPingingTelkomEquipmentComplete() {
+    public void setPingingTelkomEquipmentComplete() {
         imagePingingTelkomEquipmentFalse.setVisible(false);
         imagePingingTelkomEquipmentTrue.setVisible(true);
     }
 
-    public static void setGeneratingReportComplete() {
+    public void setGeneratingReportComplete() {
         imageGeneratingReportFalse.setVisible(false);
         imageGeneratingReportTrue.setVisible(true);
     }
 
-    public static void setFinishedComplete() {
+    public void setFinishedComplete() {
         imageFinishedFalse.setVisible(false);
         imageFinishedTrue.setVisible(true);
     }
-    //</editor-fold>
 
-    //<editor-fold desc="Results Pane">
     private void resultsPane() {
         JLabel resultsHeaderLabel = new JLabel();
         resultsHeaderLabel.setText("Results");
@@ -279,11 +279,9 @@ public class Interface extends JFrame {
         labelOpenResultsInTextFileFormatted.setBounds(260, 374, 340, 20);
         resultsPane.add(labelOpenResultsInTextFileFormatted);
     }
-    //</editor-fold>
 
-    //<editor-fold desc="Display Pane">
-    private static JLabel displayHeaderLabel = new JLabel();
-    private static JTextArea displayTextArea = new JTextArea();
+    private JLabel displayHeaderLabel = new JLabel();
+    private JTextArea displayTextArea = new JTextArea();
 
     private void displayPane() {
         displayHeaderLabel.setText("Display");
@@ -328,11 +326,11 @@ public class Interface extends JFrame {
 
     }
 
-    public static void setDisplayHeaderLabel(String labelText) {
+    public void setDisplayHeaderLabel(String labelText) {
         displayHeaderLabel.setText(labelText);
     }
 
-    public static void setDisplayTextArea(String areaText) {
+    public void setDisplayTextArea(String areaText) {
         displayTextArea.setText(areaText);
     }
 

@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 public class ReportPingAnalyse {
     //VARIABLES
     private static int maxPing = 0;
-    private static int minPing = 0;
     private static int avePing = 0;
     private static int packetLoss = 0;
 //VARIABLES
@@ -16,10 +15,6 @@ public class ReportPingAnalyse {
     //GETS
     public int getMaxPing() {
         return maxPing;
-    }
-
-    public int getMinPing() {
-        return minPing;
     }
 
     public int getAvePing() {
@@ -47,12 +42,6 @@ public class ReportPingAnalyse {
                 maxPing = Integer.parseInt(maxMatcher.group(1));
             }
 
-            Pattern minPattern = Pattern.compile("Minimum...(\\d*)");
-            Matcher minMatcher = minPattern.matcher(pingResults);
-            if (minMatcher.find()) {
-                minPing = Integer.parseInt(minMatcher.group(1));
-            }
-
             Pattern avePattern = Pattern.compile("Average...(\\d*)");
             Matcher aveMatcher = avePattern.matcher(pingResults);
             if (aveMatcher.find()) {
@@ -67,7 +56,6 @@ public class ReportPingAnalyse {
             Matcher Matcher = pattern.matcher(pingResults);
             if (Matcher.find()) {
                 maxPing = Integer.parseInt(Matcher.group(3));
-                minPing = Integer.parseInt(Matcher.group(1));
                 avePing = Integer.parseInt(Matcher.group(2));
             }
 
@@ -87,7 +75,6 @@ public class ReportPingAnalyse {
             Matcher Matcher = pattern.matcher(pingResults);
             if (Matcher.find()) {
                 maxPing = Integer.parseInt(Matcher.group(3));
-                minPing = Integer.parseInt(Matcher.group(1));
                 avePing = Integer.parseInt(Matcher.group(2));
             }
 
