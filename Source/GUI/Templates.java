@@ -2,6 +2,8 @@
 //www.zertop.com
 package GUI;
 
+import Config.Config;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,8 +19,8 @@ public class Templates {
         JLabel logo = getLogoImage();
 
         JLabel versionLabel = new JLabel(); //Version Label
-        versionLabel.setText("Version: " + Control.Config.getVersion());
-        versionLabel.setFont(new Font("Tahoma", 0, 10));
+        versionLabel.setText("Zertop | Version: " + Config.getVersion());
+        versionLabel.setFont(new Font("Tahoma", 0, 9));
         versionLabel.setForeground(Color.WHITE);
         versionLabel.setHorizontalAlignment(SwingConstants.CENTER);
         versionLabel.setBounds(0, 430, 650, 20);

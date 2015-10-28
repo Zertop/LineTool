@@ -2,6 +2,8 @@
 //www.zertop.com
 package Control;
 
+import Config.Config;
+
 import java.io.*;
 import java.net.URL;
 
@@ -51,9 +53,5 @@ public class DownloadFile {
             System.out.println("An error occured whilst trying to download a file!\n" + ex);
         }
         return null;
-    }
-
-    public static void postQuery(String url) {
-
     }
 }
