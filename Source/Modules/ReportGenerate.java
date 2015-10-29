@@ -41,7 +41,7 @@ public class ReportGenerate implements Runnable {
 
     public void getPingResults() //Generate Ping Results
     {
-        pingResults = IPPing.run(determinedIP, 1);
+        pingResults = IPPing.run(determinedIP, 30);
     }
 
     public void genReport() //Generate report files
