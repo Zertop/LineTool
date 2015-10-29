@@ -307,6 +307,8 @@ public class Interface extends JFrame {
             }
         });
 
+
+
         displayTextArea.setEditable(false);
         displayTextArea.setBackground(new java.awt.Color(255, 255, 255, 25));
         displayTextArea.setForeground(new java.awt.Color(255, 255, 255));
@@ -315,7 +317,6 @@ public class Interface extends JFrame {
         displayTextArea.setWrapStyleWord(true);
         displayTextArea.setBounds(110, 240, 450, 180);
         displayTextArea.setBorder(new LineBorder(new Color(255, 255, 255, 50), 1, true));
-        displayPane.add(displayTextArea);
         displayTextArea.addMouseListener(new MouseAdapter() { //Ensures transparency is correctly painted
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -323,6 +324,13 @@ public class Interface extends JFrame {
                 displayTextArea.repaint();
             }
         });
+
+        JScrollPane displayTextScroll = new JScrollPane(displayTextArea);
+        displayTextScroll.setBounds(110, 240, 450, 180);
+        displayTextScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        displayTextScroll.setOpaque(false);
+        displayTextScroll.setBorder(null);
+        displayPane.add(displayTextScroll);
 
     }
 
@@ -333,6 +341,4 @@ public class Interface extends JFrame {
     public void setDisplayTextArea(String areaText) {
         displayTextArea.setText(areaText);
     }
-
-    //</editor-fold>
 }
