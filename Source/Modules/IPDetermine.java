@@ -1,4 +1,4 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
 package Modules;
 
@@ -15,6 +15,7 @@ public class IPDetermine {
                 String traceResults = IPTrace.run("zertop.com", 2);
                 Pattern packetLossPattern = Pattern.compile("2 .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})");
                 Matcher packetLossMatcher = packetLossPattern.matcher(traceResults);
+                packetLossMatcher.find();
                 try { //Kick error if unable to match IP
                     IP = packetLossMatcher.group(1);
                 } catch (Exception e) {
