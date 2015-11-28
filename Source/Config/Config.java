@@ -4,7 +4,7 @@ package Config;
 
 public class Config {
     //Constant Variables
-    private static final int version = 222; //Current version
+    private static final int version = 223; //Current version
     private static final String releasesURL = "http://releases.zertop.com/linetool/"; //URL for the latest version of the file
 
 
