@@ -1,8 +1,6 @@
 //Zertop™
 //www.zertop.com
-package Modules.Misc;
-
-import LineTool.Control.Config;
+package LineTool.Control;
 
 import java.io.*;
 import java.net.URL;

@@ -2,8 +2,6 @@
 //www.zertop.com
 package LineTool.Control;
 
-import Modules.Misc.DownloadFile;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.FileOutputStream;
