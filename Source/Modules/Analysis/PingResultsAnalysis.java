@@ -1,11 +1,13 @@
 //Zertop™
 //www.zertop.com
-package Modules;
+package Modules.Analysis;
+
+import Modules.Misc.OSVariables;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ReportPingAnalyse {
+public class PingResultsAnalysis {
     //VARIABLES
     private static int maxPing = 0;
     private static int avePing = 0;
@@ -27,7 +29,7 @@ public class ReportPingAnalyse {
 //GETS
 
     //GENERATE MINMAXAVE
-    public ReportPingAnalyse(String pingResults) {
+    public PingResultsAnalysis(String pingResults) {
         //WINDOWS
         if (OSVariables.isWindows()) {
             Pattern packetLossPattern = Pattern.compile("Lost.*\\((\\d*)");

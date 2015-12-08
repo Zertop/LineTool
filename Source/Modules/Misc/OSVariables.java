@@ -1,6 +1,6 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
-package Modules;
+package Modules.Misc;
 
 public class OSVariables {
     private static String OS = System.getProperty("os.name").toLowerCase();

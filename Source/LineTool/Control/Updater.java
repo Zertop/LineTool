@@ -1,8 +1,8 @@
 //Zertop™
 //www.zertop.com
-package Control;
+package LineTool.Control;
 
-import Config.Config;
+import Modules.Misc.DownloadFile;
 
 import javax.swing.*;
 import java.io.File;

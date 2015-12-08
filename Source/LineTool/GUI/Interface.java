@@ -1,8 +1,9 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
-package GUI;
+package LineTool.GUI;
 
-import Control.Engine;
+import LineTool.Control.Engine;
+import LineTool.Control.Variables;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -28,13 +29,6 @@ public class Interface extends JFrame {
         testsPane(); //Generate Tests Pane
         resultsPane(); //Generate Results Pane
         displayPane(); //Generate Display Pane
-
-        startDynamicInterface();
-    }
-
-    public void startDynamicInterface() {
-        Thread GUIDynamicThread = new Thread(new Dynamic());
-        GUIDynamicThread.start();
     }
 
     private void initJFrame() {
@@ -65,14 +59,14 @@ public class Interface extends JFrame {
 
     private void startPane() {
         JLabel startButton = new JLabel(); //Start Button
-        startButton.setIcon(new ImageIcon(getClass().getResource("/GUI/Images/start.png")));
+        startButton.setIcon(new ImageIcon(getClass().getResource("/LineTool/GUI/Images/start.png")));
         startButton.setHorizontalAlignment(SwingConstants.CENTER);
         startButton.setBounds(0, 300, 650, 48);
         startPane.add(startButton);
 
         startButton.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                Control.Engine.beginTests();
+                LineTool.Control.Engine.doTests();
             }
         });
 
@@ -114,12 +108,12 @@ public class Interface extends JFrame {
         labelDeterminingIPToPing.setBounds(150, 290, 210, 20);
         testsPane.add(labelDeterminingIPToPing);
 
-        imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/cross.png")));
         imageDeterminingIPToPingFalse.setBounds(380, 290, 20, 20);
         testsPane.add(imageDeterminingIPToPingFalse);
         imageDeterminingIPToPingFalse.setVisible(true);
 
-        imageDeterminingIPToPingTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageDeterminingIPToPingTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/tick.png")));
         imageDeterminingIPToPingTrue.setBounds(380, 290, 20, 20);
         testsPane.add(imageDeterminingIPToPingTrue);
         imageDeterminingIPToPingTrue.setVisible(false);
@@ -133,12 +127,12 @@ public class Interface extends JFrame {
         labelPingingTelkomEquipment.setBounds(150, 320, 210, 20);
         testsPane.add(labelPingingTelkomEquipment);
 
-        imagePingingTelkomEquipmentFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imagePingingTelkomEquipmentFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/cross.png")));
         imagePingingTelkomEquipmentFalse.setBounds(380, 320, 20, 20);
         testsPane.add(imagePingingTelkomEquipmentFalse);
         imagePingingTelkomEquipmentFalse.setVisible(true);
 
-        imagePingingTelkomEquipmentTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imagePingingTelkomEquipmentTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/tick.png")));
         imagePingingTelkomEquipmentTrue.setBounds(380, 320, 20, 20);
         testsPane.add(imagePingingTelkomEquipmentTrue);
         imagePingingTelkomEquipmentTrue.setVisible(false);
@@ -152,12 +146,12 @@ public class Interface extends JFrame {
         labelGeneratingReport.setBounds(150, 350, 210, 20);
         testsPane.add(labelGeneratingReport);
 
-        imageGeneratingReportFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageGeneratingReportFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/cross.png")));
         imageGeneratingReportFalse.setBounds(380, 350, 20, 20);
         testsPane.add(imageGeneratingReportFalse);
         imageGeneratingReportFalse.setVisible(true);
 
-        imageGeneratingReportTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageGeneratingReportTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/tick.png")));
         imageGeneratingReportTrue.setBounds(380, 350, 20, 20);
         testsPane.add(imageGeneratingReportTrue);
         imageGeneratingReportTrue.setVisible(false);
@@ -171,12 +165,12 @@ public class Interface extends JFrame {
         labelFinished.setBounds(150, 380, 210, 20);
         testsPane.add(labelFinished);
 
-        imageFinishedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/cross.png")));
+        imageFinishedFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/cross.png")));
         imageFinishedFalse.setBounds(380, 380, 20, 20);
         testsPane.add(imageFinishedFalse);
         imageFinishedFalse.setVisible(true);
 
-        imageFinishedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/tick.png")));
+        imageFinishedTrue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/tick.png")));
         imageFinishedTrue.setBounds(380, 380, 20, 20);
         testsPane.add(imageFinishedTrue);
         imageFinishedTrue.setVisible(false);
@@ -216,13 +210,13 @@ public class Interface extends JFrame {
         resultsPane.add(resultsHeaderLabel);
 
         JLabel imageDisplayResultsOnScreen = new JLabel();
-        imageDisplayResultsOnScreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/monitor.png")));
+        imageDisplayResultsOnScreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/monitor.png")));
         imageDisplayResultsOnScreen.setBounds(180, 240, 48, 48);
         resultsPane.add(imageDisplayResultsOnScreen);
         imageDisplayResultsOnScreen.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Engine.displayMessage("Results", Engine.getIntelligentReport());
+                Engine.displayMessage("Results", Variables.report.getIntelReport());
             }
         });
 
@@ -235,14 +229,14 @@ public class Interface extends JFrame {
         resultsPane.add(labelDisplayResultsOnScreen);
 
         JLabel imageOpenResultsInTextFilePlain = new JLabel();
-        imageOpenResultsInTextFilePlain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/clipextra.png")));
+        imageOpenResultsInTextFilePlain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/clipextra.png")));
         imageOpenResultsInTextFilePlain.setBounds(180, 300, 48, 48);
         resultsPane.add(imageOpenResultsInTextFilePlain);
         imageOpenResultsInTextFilePlain.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().open(new File(Engine.getPlainTxtPath()));
+                    Desktop.getDesktop().open(new File(Variables.report.getPlainTxtPath()));
                 } catch (Exception ex) {
                 }
             }
@@ -257,14 +251,14 @@ public class Interface extends JFrame {
         resultsPane.add(labelOpenResultsInTextFilePlain);
 
         JLabel imageOpenResultsInTextFileFormatted = new JLabel();
-        imageOpenResultsInTextFileFormatted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/clip.png")));
+        imageOpenResultsInTextFileFormatted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/clip.png")));
         imageOpenResultsInTextFileFormatted.setBounds(180, 360, 48, 48);
         resultsPane.add(imageOpenResultsInTextFileFormatted);
         imageOpenResultsInTextFileFormatted.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().open(new File(Engine.getFormattedTxtPath()));
+                    Desktop.getDesktop().open(new File(Variables.report.getFormattedTxtPath()));
                 } catch (Exception ex) {
                     System.out.println(ex);
                 }
@@ -292,7 +286,7 @@ public class Interface extends JFrame {
         displayPane.add(displayHeaderLabel);
 
         JLabel imageGoBack = new JLabel();
-        imageGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/return.png")));
+        imageGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/return.png")));
         imageGoBack.setText("Go Back");
         imageGoBack.setForeground(Color.WHITE);
         imageGoBack.setBounds(10, 10, 100, 32);
@@ -301,12 +295,11 @@ public class Interface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Engine.goToResults();
+                    LineTool.Control.Variables.GUI.switchToPane(LineTool.Control.Variables.GUI.resultsPane);
                 } catch (Exception ex) {
                 }
             }
         });
-
 
 
         displayTextArea.setEditable(false);

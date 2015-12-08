@@ -1,12 +1,14 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
-package Modules;
+package Modules.NetworkTools;
+
+import Modules.Misc.OSVariables;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IPPing {
+public class PingIP {
     public static String run(String host, int num) {
         String output = "";
         try {

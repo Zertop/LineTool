@@ -1,13 +1,14 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
-package Modules;
+package Modules.NetworkTools;
 
-import javax.swing.*;
+import Modules.Misc.OSVariables;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IPTrace {
+public class TraceIP {
     public static String run(String host, int hops) {
         String output = "";
         try {
@@ -23,7 +24,7 @@ public class IPTrace {
                     output = output + OSVariables.getLineBreak() + line;
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "An error occured. A tracert was attempted on a non-windows computer. Please report this to Zertop.");
+                System.out.println("An error occured. A tracert was attempted on a non-windows computer. Please report this to Zertop.");
             }
         } catch (IOException | InterruptedException e1) {
             System.out.println(e1);

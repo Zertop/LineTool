@@ -1,8 +1,8 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
-package GUI;
+package LineTool.GUI;
 
-import Config.Config;
+import LineTool.Control.Config;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +40,7 @@ public class Templates {
     private static JLabel getBackGroundImage() //Background
     {
         JLabel backgroundImage = new JLabel();
-        backgroundImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/GUI/Images/back.jpg")));
+        backgroundImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/LineTool/GUI/Images/back.jpg")));
         backgroundImage.setBounds(0, 0, 650, 450);
         return backgroundImage;
     }
@@ -48,7 +48,7 @@ public class Templates {
     private static JLabel getLogoImage() //Logo
     {
         JLabel logoImage = new JLabel();
-        logoImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/GUI/Images/logo.png")));
+        logoImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/LineTool/GUI/Images/logo.png")));
         logoImage.setBounds(250, 50, 150, 150); //Logo
         return logoImage;
     }

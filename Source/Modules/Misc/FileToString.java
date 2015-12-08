@@ -1,6 +1,6 @@
-//Zertop™
+//Zertopï¿½
 //www.zertop.com
-package Modules;
+package Modules.Misc;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
