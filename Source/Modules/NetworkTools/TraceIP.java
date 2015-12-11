@@ -12,19 +12,21 @@ public class TraceIP {
     public static String run(String host, int hops) {
         String output = "";
         try {
-            String tracecmd;
+            String tracecmd = null;
 
             if (OSVariables.isWindows()) {
                 tracecmd = "tracert -h " + hops + " " + host; // For Windows
-                Process trace = Runtime.getRuntime().exec(tracecmd);
-                trace.waitFor();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(trace.getInputStream()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    output = output + OSVariables.getLineBreak() + line;
-                }
-            } else {
-                System.out.println("An error occured. A tracert was attempted on a non-windows computer. Please report this to Zertop.");
+            }
+            if (OSVariables.isUnix()) {
+                tracecmd = "traceroute -m " + hops + " " + host; // For Linux
+            }
+
+            Process trace = Runtime.getRuntime().exec(tracecmd);
+            trace.waitFor();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(trace.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output = output + OSVariables.getLineBreak() + line;
             }
         } catch (IOException | InterruptedException e1) {
             System.out.println(e1);
