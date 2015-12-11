@@ -13,7 +13,7 @@ public class DetermineIP {
         String IP = "";
         PingResultsAnalysis testIP = new PingResultsAnalysis(PingIP.run("155.239.255.250", 1));
         if (testIP.getPacketLoss() == 100) {
-            String traceResults = TraceIP.run("zertop.com", 3);
+            String traceResults = TraceIP.run("8.8.8.8", 2);
             Pattern ipPattern = null;
 
             if (OSVariables.isWindows()) {
