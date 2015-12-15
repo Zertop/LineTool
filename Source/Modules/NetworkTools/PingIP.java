@@ -15,9 +15,9 @@ public class PingIP {
             String pingcmd;
 
             if (OSVariables.isWindows()) {
-                pingcmd = "ping " + host + " -n " + count + " -i " + ttl; // For Windows
+                pingcmd = "ping " + " -n " + count + " -i " + ttl + " " + host; // For Windows
             } else {
-                pingcmd = "ping " + host + " -c " + count + " -t " + ttl; // For Linux and OSX
+                pingcmd = "ping " + " -c " + count + " -t " + ttl + " " + host; // For Linux and OSX
             }
 
             Process ping = Runtime.getRuntime().exec(pingcmd);
