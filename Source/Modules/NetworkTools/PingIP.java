@@ -9,15 +9,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class PingIP {
-    public static String run(String host, int num) {
+    public static String run(String host, int count, int ttl) {
         String output = "";
         try {
             String pingcmd;
 
             if (OSVariables.isWindows()) {
-                pingcmd = "ping -n " + num + " " + host; // For Windows
+                pingcmd = "ping " + host + " -n " + count + " -i " + ttl; // For Windows
             } else {
-                pingcmd = "ping -c " + num + " " + host; // For Linux and OSX
+                pingcmd = "ping " + host + " -c " + count + " -t " + ttl; // For Linux and OSX
             }
 
             Process ping = Runtime.getRuntime().exec(pingcmd);

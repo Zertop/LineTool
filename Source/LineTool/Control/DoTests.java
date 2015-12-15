@@ -22,7 +22,7 @@ public class DoTests implements Runnable {
         LineTool.Control.Variables.GUI.setDeterminingIPToPingComplete();
 
         //Ping the IP
-        String pingResults = PingIP.run(determinedIP, 30);
+        String pingResults = PingIP.run(determinedIP, 30, 30);
         LineTool.Control.Variables.GUI.setPingingTelkomEquipmentComplete();
         Sleep.Time(1);
 
