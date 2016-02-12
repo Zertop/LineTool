@@ -24,7 +24,7 @@ public class Interface extends JFrame {
     public Interface() {
         initJFrame(); //Init main components
 
-        launcherPane(); //Generate Engine Pane
+        launcherPane(); //Generate Launcher Pane
         startPane(); //Generate Start Pane
         testsPane(); //Generate Tests Pane
         resultsPane(); //Generate Results Pane
@@ -42,7 +42,7 @@ public class Interface extends JFrame {
         panel.setVisible(true); //Sets the panel Visible
         pack(); //Pack to make it nice and neat
         this.setLocationRelativeTo(null); //Generate Centre
-        this.repaint();
+        this.repaint(); //Repaint to ensure it shows up correctly
     }
 
     private void launcherPane() {
@@ -105,7 +105,7 @@ public class Interface extends JFrame {
         labelDeterminingIPToPing.setForeground(Color.WHITE);
         labelDeterminingIPToPing.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelDeterminingIPToPing.setText("Determining IP Address to Ping:");
-        labelDeterminingIPToPing.setBounds(150, 290, 210, 20);
+        labelDeterminingIPToPing.setBounds(130, 290, 230, 20);
         testsPane.add(labelDeterminingIPToPing);
 
         imageDeterminingIPToPingFalse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LineTool/GUI/Images/cross.png")));

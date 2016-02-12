@@ -4,7 +4,7 @@ package LineTool.Control;
 
 public class Config {
     //Constant Variables
-    private static final int version = 224; //Current version
+    private static final int version = 225; //Current version
     private static final String releasesURL = "http://releases.zertop.com/linetool/"; //URL for the latest version of the file
 
 

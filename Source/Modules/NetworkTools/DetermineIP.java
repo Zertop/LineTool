@@ -23,9 +23,9 @@ public class DetermineIP {
                 ipPattern = Pattern.compile("From .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}).*Time to live exceeded");
             }
 
-            Matcher ipMatcher = ipPattern.matcher(results);
-            ipMatcher.find();
             try { //Kick error if unable to match IP
+                Matcher ipMatcher = ipPattern.matcher(results);
+                ipMatcher.find();
                 IP = ipMatcher.group(1);
             } catch (Exception e) {
                 System.out.println("Sorry, the tool was unable to detect an IP to ping.\nPlease ensure that you are connected to the internet.\n\nDetailed:\n" + e + results);
