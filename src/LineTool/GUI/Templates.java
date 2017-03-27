@@ -2,7 +2,7 @@
 //www.zertop.com
 package LineTool.GUI;
 
-import LineTool.Control.Config;
+import LineTool.Control.Vars;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,11 +15,11 @@ public class Templates {
         pane.setLayout(null);
         pane.setPreferredSize(new Dimension(650, 450));
 
-        JLabel background = getBackGroundImage();
+        JLabel background = getBackgroundImage();
         JLabel logo = getLogoImage();
 
         JLabel versionLabel = new JLabel(); //Version Label
-        versionLabel.setText("Zertop | Version: " + Config.getVersion());
+        versionLabel.setText("Zertop | Version: " + Vars.getVersionString());
         versionLabel.setFont(new Font("Tahoma", 0, 9));
         versionLabel.setForeground(Color.WHITE);
         versionLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -37,7 +37,7 @@ public class Templates {
         return pane;
     }
 
-    private static JLabel getBackGroundImage() //Background
+    private static JLabel getBackgroundImage() //Background
     {
         JLabel backgroundImage = new JLabel();
         backgroundImage.setIcon(new ImageIcon(Templates.class.getClass().getResource("/LineTool/GUI/Images/back.jpg")));

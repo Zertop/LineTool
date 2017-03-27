@@ -11,15 +11,15 @@ import java.util.regex.Pattern;
 public class DetermineIP {
     public static String run() {
         String IP = "";
-        PingResultsAnalysis testIP = new PingResultsAnalysis(PingIP.run("155.239.255.250", 1,30));
+        PingResultsAnalysis testIP = new PingResultsAnalysis(PingIP.run("155.239.255.250", 1, 30));
         if (testIP.getPacketLoss() == 100) {
-            String results = PingIP.run("8.8.8.8",1,2);
+            String results = PingIP.run("8.8.8.8", 1, 2);
             Pattern ipPattern = null;
 
             if (OSVariables.isWindows()) {
                 ipPattern = Pattern.compile("Reply from .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}): TTL expired in transit");
             }
-            if (OSVariables.isUnix()){
+            if (OSVariables.isUnix()) {
                 ipPattern = Pattern.compile("From .*?(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}).*Time to live exceeded");
             }
 

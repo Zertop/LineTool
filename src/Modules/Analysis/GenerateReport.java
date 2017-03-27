@@ -15,7 +15,8 @@ public class GenerateReport {
     String plainTxtPath = "";
     String formattedTxtPath = "";
     PingResultsAnalysis testIP;
-//PERM VARIABLES
+
+    //PERM VARIABLES
     public GenerateReport(String pingResults) //Generate report files
     {
 

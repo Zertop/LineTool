@@ -14,20 +14,6 @@ public class PingResultsAnalysis {
     private static int packetLoss = 0;
 //VARIABLES
 
-    //GETS
-    public int getMaxPing() {
-        return maxPing;
-    }
-
-    public int getAvePing() {
-        return avePing;
-    }
-
-    public int getPacketLoss() {
-        return packetLoss;
-    }
-//GETS
-
     //GENERATE MINMAXAVE
     public PingResultsAnalysis(String pingResults) {
         //WINDOWS
@@ -69,7 +55,7 @@ public class PingResultsAnalysis {
                 packetLoss = -1;
             }
         }
-//LINUX  
+//LINUX
 
 //OSX
         if (OSVariables.isMac()) {
@@ -88,6 +74,20 @@ public class PingResultsAnalysis {
                 packetLoss = -1;
             }
         }
-//OSX       
+//OSX
+    }
+
+    //GETS
+    public int getMaxPing() {
+        return maxPing;
+    }
+
+    public int getAvePing() {
+        return avePing;
+    }
+//GETS
+
+    public int getPacketLoss() {
+        return packetLoss;
     }
 }

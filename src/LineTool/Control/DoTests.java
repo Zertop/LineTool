@@ -11,7 +11,7 @@ public class DoTests implements Runnable {
     @Override
     public void run() {
 
-        LineTool.Control.Variables.GUI.switchToPane(LineTool.Control.Variables.GUI.testsPane);
+        Vars.GUI.switchToPane(Vars.GUI.testsPane);
         LineTool.GUI.Dynamic dynamic = new LineTool.GUI.Dynamic();
         Thread dynamicThread = new Thread(dynamic);
 
@@ -19,21 +19,21 @@ public class DoTests implements Runnable {
 
         //Determine correct IP
         String determinedIP = DetermineIP.run();
-        LineTool.Control.Variables.GUI.setDeterminingIPToPingComplete();
+        Vars.GUI.setDeterminingIPToPingComplete();
 
         //Ping the IP
         String pingResults = PingIP.run(determinedIP, 30, 30);
-        LineTool.Control.Variables.GUI.setPingingTelkomEquipmentComplete();
+        Vars.GUI.setPingingTelkomEquipmentComplete();
         Sleep.Time(1);
 
         //Generate Report from Ping Results
-        Variables.report = new GenerateReport(pingResults);
-        LineTool.Control.Variables.GUI.setGeneratingReportComplete();
+        Vars.report = new GenerateReport(pingResults);
+        Vars.GUI.setGeneratingReportComplete();
 
         //Finish
         Sleep.Time(1);
-        LineTool.Control.Variables.GUI.setFinishedComplete();
+        Vars.GUI.setFinishedComplete();
         dynamic.stop();
-        LineTool.Control.Variables.GUI.switchToPane(LineTool.Control.Variables.GUI.resultsPane);
+        Vars.GUI.switchToPane(Vars.GUI.resultsPane);
     }
 }

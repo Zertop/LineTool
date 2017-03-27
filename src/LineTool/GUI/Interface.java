@@ -3,7 +3,7 @@
 package LineTool.GUI;
 
 import LineTool.Control.Engine;
-import LineTool.Control.Variables;
+import LineTool.Control.Vars;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -18,9 +18,18 @@ public class Interface extends JFrame {
     public JLayeredPane testsPane = Templates.getPaneTemplate();
     public JLayeredPane resultsPane = Templates.getPaneTemplate();
     public JLayeredPane displayPane = Templates.getPaneTemplate();
-
+    JLabel runningTestsLabel = new JLabel();
+    JLabel imageDeterminingIPToPingFalse = new JLabel();
+    JLabel imageDeterminingIPToPingTrue = new JLabel();
+    JLabel imagePingingTelkomEquipmentFalse = new JLabel();
+    JLabel imagePingingTelkomEquipmentTrue = new JLabel();
+    JLabel imageGeneratingReportFalse = new JLabel();
+    JLabel imageGeneratingReportTrue = new JLabel();
+    JLabel imageFinishedFalse = new JLabel();
+    JLabel imageFinishedTrue = new JLabel();
     private JLabel launchStatusLabel = new JLabel();
-
+    private JLabel displayHeaderLabel = new JLabel();
+    private JTextArea displayTextArea = new JTextArea();
     public Interface() {
         initJFrame(); //Init main components
 
@@ -79,16 +88,6 @@ public class Interface extends JFrame {
         startPane.add(startLabel);
 
     }
-
-    JLabel runningTestsLabel = new JLabel();
-    JLabel imageDeterminingIPToPingFalse = new JLabel();
-    JLabel imageDeterminingIPToPingTrue = new JLabel();
-    JLabel imagePingingTelkomEquipmentFalse = new JLabel();
-    JLabel imagePingingTelkomEquipmentTrue = new JLabel();
-    JLabel imageGeneratingReportFalse = new JLabel();
-    JLabel imageGeneratingReportTrue = new JLabel();
-    JLabel imageFinishedFalse = new JLabel();
-    JLabel imageFinishedTrue = new JLabel();
 
     private void testsPane() {
 
@@ -216,7 +215,7 @@ public class Interface extends JFrame {
         imageDisplayResultsOnScreen.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Engine.displayMessage("Results", Variables.report.getIntelReport());
+                Engine.displayMessage("Results", Vars.report.getIntelReport());
             }
         });
 
@@ -236,7 +235,7 @@ public class Interface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().open(new File(Variables.report.getPlainTxtPath()));
+                    Desktop.getDesktop().open(new File(Vars.report.getPlainTxtPath()));
                 } catch (Exception ex) {
                 }
             }
@@ -258,7 +257,7 @@ public class Interface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().open(new File(Variables.report.getFormattedTxtPath()));
+                    Desktop.getDesktop().open(new File(Vars.report.getFormattedTxtPath()));
                 } catch (Exception ex) {
                     System.out.println(ex);
                 }
@@ -273,9 +272,6 @@ public class Interface extends JFrame {
         labelOpenResultsInTextFileFormatted.setBounds(260, 374, 340, 20);
         resultsPane.add(labelOpenResultsInTextFileFormatted);
     }
-
-    private JLabel displayHeaderLabel = new JLabel();
-    private JTextArea displayTextArea = new JTextArea();
 
     private void displayPane() {
         displayHeaderLabel.setText("Display");
@@ -295,7 +291,7 @@ public class Interface extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    LineTool.Control.Variables.GUI.switchToPane(LineTool.Control.Variables.GUI.resultsPane);
+                    Vars.GUI.switchToPane(Vars.GUI.resultsPane);
                 } catch (Exception ex) {
                 }
             }

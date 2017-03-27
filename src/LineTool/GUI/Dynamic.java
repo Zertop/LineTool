@@ -2,6 +2,7 @@
 //www.zertop.com
 package LineTool.GUI;
 
+import LineTool.Control.Vars;
 import Modules.Misc.Sleep;
 
 public class Dynamic implements Runnable {
@@ -13,7 +14,7 @@ public class Dynamic implements Runnable {
         }
     }
 
-    public void stop(){
+    public void stop() {
         running = false;
     }
 
@@ -26,8 +27,7 @@ public class Dynamic implements Runnable {
         setRunningTestsLabel("Running Tests...");
     }
 
-    private void setRunningTestsLabel (String text)
-    {
-        LineTool.Control.Variables.GUI.setRunningTestsLabel(text);
+    private void setRunningTestsLabel(String text) {
+        Vars.GUI.setRunningTestsLabel(text);
     }
 }
